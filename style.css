@@ -33,15 +33,22 @@
 
 html {
     scroll-behavior: smooth;
-    background: var(--blanco);
+    background: #FFFFFF;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
     min-width: 320px;
-    background: var(--blanco);
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    background: #FFFFFF;
     color: var(--texto);
     font-family: "Cinzel", serif;
     overflow-x: hidden;
+    position: relative;
 }
 
 button,
@@ -199,8 +206,9 @@ button {
 .invitacion {
     position: relative;
     width: 100%;
-    overflow: visible;
-
+    max-width: 100%;
+    overflow-x: clip;
+    overflow-y: visible;
     opacity: 0;
     visibility: hidden;
 }
@@ -2373,5 +2381,43 @@ button {
 
     .footer span {
         font-size: 8px;
+    }
+}
+
+/* =========================================================
+   CONTROL DE ANCHO EN MÓVILES
+   Evita bordes blancos y desplazamientos horizontales
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .invitacion {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: clip;
+    }
+
+    .seccion {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .bienvenida,
+    .fecha,
+    .cuenta,
+    .ubicacion,
+    .dresscode,
+    .deseos,
+    .fotos,
+    .rsvp {
+        width: 100%;
+        max-width: 100%;
     }
 }

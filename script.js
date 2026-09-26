@@ -432,7 +432,7 @@ if (deseosForm) {
                 }
 
                 ctx.putImageData(datos, 0, 0);
-                img.src = canvas.toDataURL("image/png");
+                img.src = canvas.toDataURL("image/PNG");
             } catch (error) {
                 /* Si el navegador bloquea canvas, se conserva el PNG original. */
             }
