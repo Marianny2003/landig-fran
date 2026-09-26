@@ -2321,3 +2321,57 @@ button {
         transition-duration: .01ms !important;
     }
 }
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+    width: 100%;
+    padding: 28px 20px 32px;
+    text-align: center;
+    background: #fff;
+    color: #8f5d68;
+    font-family: "Cinzel", serif;
+}
+
+.footer p {
+    margin: 0 0 6px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.footer strong {
+    display: block;
+    margin-bottom: 7px;
+    color: #D1030F;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.footer span {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 1px;
+    opacity: .7;
+}
+
+@media (max-width: 600px) {
+    .footer {
+        padding: 24px 16px 28px;
+    }
+
+    .footer p {
+        font-size: 9px;
+    }
+
+    .footer strong {
+        font-size: 13px;
+    }
+
+    .footer span {
+        font-size: 8px;
+    }
+}
