@@ -36,7 +36,7 @@ html {
     background: #FFFFFF;
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 body {
@@ -47,7 +47,7 @@ body {
     background: #FFFFFF;
     color: var(--texto);
     font-family: "Cinzel", serif;
-    overflow-x: hidden;
+    overflow-x: clip;
     position: relative;
 }
 
@@ -205,10 +205,12 @@ button {
 
 .invitacion {
     position: relative;
+
     width: 100%;
     max-width: 100%;
-    overflow-x: clip;
-    overflow-y: visible;
+
+    overflow: hidden;
+
     opacity: 0;
     visibility: hidden;
 }
@@ -217,7 +219,6 @@ button {
     opacity: 1;
     visibility: visible;
 }
-
 
 /* =========================================================
    TRANSICIÓN DE ENTRADA
@@ -268,6 +269,9 @@ button {
 .seccion {
     position: relative;
 
+    width: 100%;
+    max-width: 100%;
+
     min-height: 100svh;
 
     display: flex;
@@ -276,9 +280,9 @@ button {
 
     padding: 64px 20px;
 
-    overflow: visible;
+    overflow: hidden;
 
-    isolation: auto;
+    isolation: isolate;
 }
 
 .seccion::after {
