@@ -1,0 +1,2323 @@
+/* =========================================================
+   PAOLA MARIE | BABY SHOWER
+   ESTILOS PRINCIPALES
+   ========================================================= */
+
+@font-face {
+    font-family: "Joshico";
+    src: url("fonts/Joshico.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --rosa: #F6ADC1;
+    --rojo: #D1030F;
+    --blanco: #FFFFFF;
+    --rosa-claro: rgba(246, 173, 193, 0.28);
+    --rosa-suave: #fff4f7;
+    --texto: #5d2637;
+    --sombra: 0 18px 45px rgba(91, 28, 46, 0.13);
+}
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: var(--blanco);
+}
+
+body {
+    min-width: 320px;
+    background: var(--blanco);
+    color: var(--texto);
+    font-family: "Cinzel", serif;
+    overflow-x: hidden;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    border: 0;
+}
+
+
+/* =========================================================
+   PORTADA
+   ========================================================= */
+
+.portada {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+    min-height: 100svh;
+
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    /* mismo fondo que la imagen */
+    background: #fdf0f0;
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.9s ease;
+}
+
+.portada.salir {
+    opacity: 0;
+    transform: scale(1.035);
+    pointer-events: none;
+}
+
+/* =========================================================
+   IMAGEN DE PORTADA
+   ========================================================= */
+
+.imagen-portada {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    /*
+       IMPORTANTE:
+       contain evita que la imagen se agrande y se recorte.
+       Mantiene completa la composición original.
+    */
+    object-fit: contain;
+
+    object-position: center center;
+
+    background: #fdf0f0;
+}
+
+
+/* =========================================================
+   BOTÓN ABRIR INVITACIÓN
+   ========================================================= */
+
+.boton-abrir {
+    position: absolute;
+
+    left: 50%;
+    bottom: max(34px, env(safe-area-inset-bottom));
+
+    z-index: 20;
+
+    min-width: 210px;
+    max-width: calc(100% - 40px);
+
+    padding: 14px 25px;
+
+    border: 1px solid rgba(255,255,255,0.95);
+    border-radius: 999px;
+
+    color: #fff;
+    background: var(--rojo);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.16);
+
+    font-family: "Cinzel", serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+
+    cursor: pointer;
+    overflow: hidden;
+
+    transform: translateX(-50%);
+
+    animation: respirarPortada 2.4s ease-in-out infinite;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.boton-abrir::after {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: -80%;
+
+    width: 50%;
+    height: 100%;
+
+    transform: skewX(-22deg);
+
+    background: rgba(255,255,255,0.35);
+
+    animation: brilloBoton 3.2s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+.boton-abrir:hover {
+    transform: translateX(-50%) scale(1.04);
+}
+
+.boton-abrir:active {
+    transform: translateX(-50%) scale(0.94);
+}
+
+.boton-abrir.abriendo {
+    animation: none;
+    transform: translateX(-50%) scale(0.94);
+}
+
+
+/* =========================================================
+   INVITACIÓN
+   ========================================================= */
+
+.invitacion {
+    position: relative;
+    width: 100%;
+    overflow: visible;
+
+    opacity: 0;
+    visibility: hidden;
+}
+
+.invitacion.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* =========================================================
+   TRANSICIÓN DE ENTRADA
+   ========================================================= */
+
+.transicion-entrada {
+    position: fixed;
+    inset: 0;
+
+    z-index: 900;
+
+    pointer-events: none;
+    opacity: 0;
+}
+
+.transicion-entrada.activa {
+    opacity: 1;
+}
+
+.destello {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,0.96) 0%,
+            rgba(246,173,193,0.85) 25%,
+            rgba(246,173,193,0) 70%
+        );
+
+    transform: scale(0.25);
+
+    animation:
+        destelloEntrada 0.9s ease forwards;
+}
+
+.transicion-entrada.salir {
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+
+/* =========================================================
+   SECCIONES GENERALES
+   ========================================================= */
+
+.seccion {
+    position: relative;
+
+    min-height: 100svh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 64px 20px;
+
+    overflow: visible;
+
+    isolation: auto;
+}
+
+.seccion::after {
+    display: none;
+}
+
+
+/* =========================================================
+   FONDOS
+   ========================================================= */
+
+.grafico-lazo,
+.grafico-fresa,
+.fondo-flotante,
+.fondo-suave,
+.fondo-imagen-seccion,
+.fondo-cuadritos,
+.fondo-cuenta,
+.monograma-fondo,
+.fondo-fotos,
+.fondo-rsvp,
+.deseos-fondo {
+    position: absolute;
+    pointer-events: none;
+}
+
+.grafico-lazo,
+.grafico-fresa {
+    user-select: none;
+}
+
+.grafico-lazo {
+    width: min(280px, 54vw);
+    height: auto;
+
+    opacity: .32;
+
+    filter:
+        drop-shadow(
+            0 13px 20px rgba(112,30,53,0.11)
+        );
+
+    transition:
+        transform 1s cubic-bezier(.2,.8,.2,1),
+        opacity 1s ease;
+
+    z-index: 0;
+}
+
+.grafico-fresa {
+    width: 70px;
+    height: auto;
+
+    opacity: .22;
+
+    filter:
+        drop-shadow(
+            0 8px 14px rgba(112,30,53,0.12)
+        );
+
+    transition:
+        transform 1s cubic-bezier(.2,.8,.2,1);
+
+    z-index: 0;
+}
+
+.seccion.activa .grafico-lazo {
+    transform: translate3d(0,0,0) rotate(0deg);
+}
+
+.seccion.activa .grafico-fresa {
+    transform: translateY(0) rotate(0deg);
+}
+
+
+/* =========================================================
+   CONTENIDO DE LAS SECCIONES
+   ========================================================= */
+
+.bienvenida-contenido,
+.fecha-contenido,
+.cuenta-contenido,
+.ubicacion-contenido,
+.dress-contenido,
+.deseos-contenido,
+.fotos-contenido,
+.rsvp-contenido {
+    position: relative;
+    z-index: 30;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform: translateY(28px);
+
+    transition:
+        opacity 0.75s ease,
+        transform 0.85s cubic-bezier(.2,.8,.2,1);
+}
+
+.seccion.activa .bienvenida-contenido,
+.seccion.activa .fecha-contenido,
+.seccion.activa .cuenta-contenido,
+.seccion.activa .ubicacion-contenido,
+.seccion.activa .dress-contenido,
+.seccion.activa .deseos-contenido,
+.seccion.activa .fotos-contenido,
+.seccion.activa .rsvp-contenido {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   ETIQUETAS
+   ========================================================= */
+
+.etiqueta,
+.seccion-etiqueta {
+    font-family: "Cinzel", serif;
+
+    font-size: 8px;
+    letter-spacing: .22em;
+
+    font-weight: 600;
+
+    color: var(--rojo);
+}
+
+
+/* =========================================================
+   BIENVENIDA
+   ========================================================= */
+
+.bienvenida {
+    min-height: 100svh;
+
+    isolation: isolate;
+
+    background-color: #f6adc1;
+
+    background-image:
+        url("images/fondo-rosado.png");
+
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    /*
+       El fondo ocupa toda la sección.
+    */
+    background-size: cover;
+
+    padding: 78px 24px;
+}
+
+.fondo-bienvenida {
+    display: none;
+}
+
+.bienvenida-contenido {
+    width: min(520px, 100%);
+    margin-inline: auto;
+}
+
+.bienvenida-lazo {
+    position: absolute;
+
+    top: 7%;
+    left: 50%;
+    right: auto;
+
+    width: min(300px, 68vw);
+
+    opacity: .32;
+
+    z-index: 1;
+
+    transform:
+        translateX(-50%)
+        rotate(0deg);
+
+    animation:
+        lazoFlotante 6s ease-in-out infinite;
+}
+
+.bienvenida-fresa {
+    position: absolute;
+
+    left: 4%;
+    bottom: 9%;
+
+    width: 58px;
+
+    opacity: .22;
+}
+
+.titulo-bienvenida {
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 145px;
+
+    font-family: "Joshico", cursive;
+
+    font-size:
+        clamp(42px, 8vw, 76px);
+
+    line-height: 1.08;
+
+    font-weight: normal;
+
+    color: var(--rojo);
+
+    text-shadow:
+        0 7px 24px rgba(209,3,15,0.12);
+}
+
+.mensaje-bienvenida {
+    width: min(330px, 92%);
+
+    margin:
+        18px auto 0;
+
+    color: var(--rojo);
+
+    font-family: "Cinzel", serif;
+
+    font-size: 11px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   MÚSICA
+   ========================================================= */
+
+.reproductor-integrado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 24px;
+}
+
+.boton-musica {
+    width: 56px;
+    height: 56px;
+
+    display: grid;
+    place-items: center;
+
+    background: rgba(255,255,255,.72);
+
+    border:
+        1px solid rgba(209,3,15,.17);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 9px 24px rgba(112,30,53,.12);
+
+    cursor: pointer;
+
+    animation:
+        botonSuave 2.8s ease-in-out infinite;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.boton-musica:hover {
+    transform: translateY(-3px) scale(1.03);
+
+    box-shadow:
+        0 14px 30px rgba(209,3,15,.22);
+}
+
+.boton-musica:active {
+    transform: scale(.91);
+}
+
+.disco {
+    width: 41px;
+    height: 41px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        repeating-radial-gradient(
+            circle,
+            #f8c3d1 0 2px,
+            #f2a7bc 3px 4px
+        );
+
+    border:
+        2px solid rgba(255,255,255,.85);
+}
+
+.boton-musica.sonando .disco {
+    animation:
+        girar 2.4s linear infinite;
+}
+
+.centro-disco {
+    width: 15px;
+    height: 15px;
+
+    display: grid;
+    place-items: center;
+
+    padding-left: 1px;
+
+    border-radius: 50%;
+
+    background: var(--rojo);
+    color: white;
+
+    font-family: Arial, sans-serif;
+    font-size: 7px;
+}
+
+.texto-musica {
+    color: var(--rojo);
+
+    font-family: "Cinzel", serif;
+
+    font-size: 7px;
+    letter-spacing: .16em;
+}
+
+
+/* =========================================================
+   FECHA
+   ========================================================= */
+
+.fecha {
+    min-height: 100svh;
+
+    background:
+        #f9d9e4;
+
+    background-image: none;
+}
+
+.fondo-fecha {
+    display: none;
+}
+
+.fecha-contenido {
+    width: min(520px, 100%);
+    margin-inline: auto;
+}
+
+.fecha .seccion-etiqueta {
+    font-family: "Joshico", cursive;
+
+    font-size:
+        clamp(28px, 8vw, 44px);
+
+    font-weight: normal;
+
+    letter-spacing: 0;
+
+    line-height: 1;
+
+    color: var(--rojo);
+
+    text-transform: none;
+}
+
+.marco-fecha {
+    position: relative;
+
+    width: min(370px, 94vw);
+
+    min-height: 330px;
+
+    margin:
+        12px auto 14px;
+
+    display: grid;
+    place-items: center;
+}
+
+.marco-imagen {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    background: transparent;
+
+    opacity: .9;
+
+    filter:
+        drop-shadow(
+            0 10px 22px rgba(90,24,40,.08)
+        );
+
+    transform: scale(1);
+
+    mix-blend-mode: normal;
+
+    transition:
+        transform .8s ease;
+}
+
+.seccion.activa .marco-imagen {
+    transform: scale(1.02);
+}
+
+.fecha-dia {
+    position: relative;
+
+    z-index: 4;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 24px 38px;
+
+    color: var(--rojo);
+}
+
+.dia-pequeno {
+    font-size: 11px;
+    letter-spacing: .24em;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+.fecha-dia strong {
+    margin: 0;
+
+    font-family: "Joshico", cursive;
+
+    font-size:
+        clamp(72px, 20vw, 112px);
+
+    line-height: .9;
+
+    font-weight: normal;
+}
+
+.fecha-dia .mes {
+    font-size: 11px;
+
+    letter-spacing: .18em;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+.fecha-dia .anio {
+    margin-top: 2px;
+
+    font-size: 9px;
+
+    letter-spacing: .3em;
+
+    white-space: nowrap;
+}
+
+.fecha-frase {
+    width: min(320px, 90%);
+
+    margin:
+        8px auto 18px;
+
+    font-size: 11px;
+
+    line-height: 1.9;
+
+    color: #714050;
+}
+
+
+/* =========================================================
+   BOTONES GENERALES
+   ========================================================= */
+
+.boton-linea,
+.boton-rojo,
+.boton-subir {
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background-color .25s ease;
+}
+
+.boton-linea {
+    padding: 11px 18px;
+
+    border:
+        1px solid rgba(209,3,15,.45);
+
+    border-radius: 999px;
+
+    background:
+        rgba(255,255,255,.65);
+
+    color: var(--rojo);
+
+    font-size: 8px;
+
+    letter-spacing: .13em;
+}
+
+.boton-linea:hover {
+    transform: translateY(-3px);
+
+    background:
+        rgba(255,255,255,.95);
+
+    box-shadow:
+        0 12px 26px rgba(91,28,46,.16);
+}
+
+.boton-linea:active {
+    transform: scale(.94);
+}
+
+.boton-rojo {
+    padding: 14px 23px;
+
+    border-radius: 999px;
+
+    color: white;
+
+    background: var(--rojo);
+
+    box-shadow:
+        0 12px 25px rgba(209,3,15,.2);
+
+    font-size: 8px;
+
+    letter-spacing: .15em;
+
+    animation:
+        botonSuave 2.4s ease-in-out infinite;
+}
+
+.boton-rojo:hover {
+    animation-play-state: paused;
+
+    transform:
+        translateY(-2px)
+        scale(1.03);
+
+    box-shadow:
+        0 14px 30px rgba(209,3,15,.22);
+}
+
+.boton-rojo:active {
+    transform: scale(.94);
+}
+
+
+/* =========================================================
+   CUENTA REGRESIVA
+   ========================================================= */
+
+.cuenta {
+    min-height: 82svh;
+
+    background: var(--rojo);
+
+    color: white;
+}
+
+.fondo-cuenta {
+    inset: 0;
+
+    z-index: -3;
+
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(255,255,255,.18),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(246,173,193,.25),
+            transparent 28%
+        ),
+        linear-gradient(
+            145deg,
+            #d1030f,
+            #ad020c
+        );
+}
+
+.cuenta-contenido {
+    width: min(650px, 100%);
+}
+
+.cuenta h2,
+.rsvp h2 {
+    margin-top: 13px;
+
+    font-family: "Joshico", cursive;
+
+    font-size:
+        clamp(38px, 10vw, 60px);
+
+    line-height: .95;
+
+    font-weight: normal;
+}
+
+.cuenta .seccion-etiqueta,
+.rsvp .seccion-etiqueta {
+    color: rgba(255,255,255,.82);
+}
+
+.contador {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 8px;
+
+    margin-top: 35px;
+}
+
+.contador-item {
+    min-height: 92px;
+
+    padding: 10px 3px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border:
+        1px solid rgba(255,255,255,.36);
+
+    border-radius: 18px;
+
+    color: white;
+
+    background:
+        rgba(255,255,255,.08);
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+}
+
+.contador-item:hover {
+    transform:
+        translateY(-3px)
+        scale(1.02);
+
+    box-shadow:
+        0 12px 26px rgba(91,28,46,.16);
+}
+
+.contador-item:active,
+.contador-item.pulsado {
+    transform: translateY(-6px);
+
+    background:
+        rgba(255,255,255,.17);
+}
+
+.contador-item strong {
+    font-size:
+        clamp(23px, 7vw, 38px);
+
+    font-weight: 500;
+}
+
+.contador-item span {
+    margin-top: 5px;
+
+    font-size: 6px;
+
+    letter-spacing: .13em;
+
+    opacity: .82;
+}
+
+.contador-item.cambio strong {
+    animation:
+        numeroCambio .45s ease;
+}
+
+.micro-mensaje {
+    margin-top: 22px;
+
+    font-size: 8px;
+
+    letter-spacing: .08em;
+
+    opacity: .72;
+}
+
+
+/* =========================================================
+   UBICACIÓN
+   ========================================================= */
+
+.ubicacion {
+    background: #fff7f9;
+}
+
+.fondo-ubicacion {
+    inset: 0;
+
+    z-index: -3;
+
+    background:
+        linear-gradient(
+            rgba(255,248,250,.76),
+            rgba(255,248,250,.88)
+        ),
+        url("images/fondo-rosado.png")
+        center / cover;
+
+    opacity: .34;
+}
+
+.ubicacion::before {
+    display: none;
+}
+
+.ubicacion-contenido {
+    width: min(480px, 100%);
+}
+
+.ubicacion h2,
+.dresscode h2,
+.fotos h2 {
+    margin-top: 11px;
+
+    color: var(--rojo);
+
+    font-family: "Joshico", cursive;
+
+    font-size:
+        clamp(42px, 11vw, 64px);
+
+    font-weight: normal;
+
+    line-height: .95;
+}
+
+.ubicacion-dato {
+    width: min(310px, 100%);
+
+    margin:
+        15px auto 23px;
+
+    padding:
+        21px 18px;
+
+    border-top:
+        1px solid rgba(209,3,15,.22);
+
+    border-bottom:
+        1px solid rgba(209,3,15,.22);
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.ubicacion-dato strong {
+    color: var(--rojo);
+
+    font-size: 11px;
+}
+
+.ubicacion-dato span {
+    font-size: 9px;
+
+    color: #79505f;
+}
+
+
+/* =========================================================
+   DRESS CODE
+   ========================================================= */
+
+.dresscode {
+    position: relative;
+
+    background: transparent;
+
+    isolation: isolate;
+}
+
+.dresscode .fondo-cuadritos {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    display: block;
+
+    background-image:
+        url("images/cuadritos.png");
+
+    background-repeat: no-repeat;
+
+    background-position: center center;
+
+    background-size: cover;
+
+    opacity: 1;
+
+    pointer-events: none;
+}
+
+.dress-contenido {
+    width: min(470px, 100%);
+}
+
+.dresscode .dress-contenido {
+    position: relative;
+    z-index: 5;
+}
+
+.dress-subtitulo {
+    margin-top: 10px;
+
+    color: #79505f;
+
+    font-size: 10px;
+}
+
+.colores-dress {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    width: min(300px, 100%);
+
+    margin:
+        25px auto 14px;
+}
+
+.color-opcion {
+    position: relative;
+
+    min-height: 50px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 8px 14px;
+
+    border:
+        1px solid rgba(209,3,15,.18);
+
+    border-radius: 999px;
+
+    color: #5e3140;
+
+    background:
+        rgba(255,255,255,.76);
+
+    font-size: 8px;
+
+    letter-spacing: .12em;
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+}
+
+.color-opcion:hover {
+    transform:
+        translateY(-3px)
+        scale(1.02);
+
+    box-shadow:
+        0 12px 26px rgba(91,28,46,.16);
+}
+
+.color-opcion span {
+    width: 30px;
+    height: 30px;
+
+    flex: 0 0 30px;
+
+    border-radius: 50%;
+
+    border:
+        2px solid rgba(255,255,255,.95);
+
+    box-shadow:
+        0 2px 9px rgba(90,30,45,.15);
+}
+
+.color-opcion.blanco span {
+    background: white;
+    border-color: #ead6dd;
+}
+
+.color-opcion.rosa span {
+    background: var(--rosa);
+}
+
+.color-opcion.rojo span {
+    background: var(--rojo);
+}
+
+.color-opcion.seleccionado {
+    transform: translateX(6px);
+
+    border-color: var(--rojo);
+
+    background:
+        rgba(255,255,255,.98);
+
+    box-shadow:
+        0 8px 22px rgba(90,30,45,.1);
+}
+
+.dress-mensaje {
+    min-height: 16px;
+
+    color: var(--rojo);
+
+    font-size: 8px;
+
+    letter-spacing: .12em;
+}
+
+
+/* =========================================================
+   MONOGRAMA
+   ========================================================= */
+
+.monograma {
+    min-height: 88svh;
+
+    background: #fffafc;
+}
+
+.monograma-fondo {
+    inset: 0;
+
+    z-index: -3;
+
+    background:
+        radial-gradient(
+            circle at 50% 46%,
+            rgba(246,173,193,.27),
+            transparent 34%
+        ),
+        linear-gradient(
+            135deg,
+            #fff8fa,
+            #fce8ee
+        );
+}
+
+.monograma-contenido {
+    width: min(460px, 100%);
+}
+
+.monograma-contenido > p:last-child {
+    width: min(300px, 90%);
+
+    margin:
+        9px auto 0;
+
+    font-size: 10px;
+
+    line-height: 1.8;
+
+    color: #76505f;
+}
+
+.monograma-circulo {
+    position: relative;
+
+    width: 170px;
+    height: 170px;
+
+    margin:
+        20px auto 19px;
+
+    border:
+        1px solid rgba(209,3,15,.38);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.6);
+
+    box-shadow:
+        0 22px 50px rgba(99,30,47,.11);
+
+    transition:
+        transform .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.seccion.activa .monograma-circulo {
+    transform:
+        rotate(-4deg)
+        scale(1.02);
+}
+
+.letra-p,
+.letra-m {
+    position: absolute;
+
+    font-family: "Joshico", cursive;
+
+    color: var(--rojo);
+
+    font-size: 93px;
+
+    line-height: 1;
+}
+
+.letra-p {
+    top: 26px;
+    left: 40px;
+}
+
+.letra-m {
+    right: 25px;
+    bottom: 17px;
+
+    opacity: .7;
+}
+
+.monograma-brillo {
+    position: absolute;
+
+    top: 18%;
+    left: 14%;
+
+    width: 22px;
+    height: 22px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.8);
+
+    filter: blur(2px);
+
+    animation:
+        brilloMonograma 2.5s ease-in-out infinite;
+}
+
+.monograma h2 {
+    color: var(--rojo);
+
+    font-family: "Joshico", cursive;
+
+    font-size:
+        clamp(52px, 15vw, 80px);
+
+    font-weight: normal;
+}
+
+
+/* =========================================================
+   FOTOS
+   ========================================================= */
+
+.fotos {
+    background: #fff8fa;
+}
+
+.fondo-fotos {
+    inset: 0;
+
+    z-index: -3;
+
+    background:
+        linear-gradient(
+            rgba(255,249,251,.77),
+            rgba(255,249,251,.88)
+        ),
+        url("images/cuadritos.png")
+        center / cover;
+}
+
+.fotos-contenido {
+    width: min(480px, 100%);
+}
+
+.fotos-texto {
+    width: min(320px, 90%);
+
+    margin:
+        13px auto 20px;
+
+    color: #74505d;
+
+    font-size: 10px;
+
+    line-height: 1.9;
+}
+
+.boton-subir {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 165px;
+    min-height: 45px;
+
+    padding:
+        12px 22px;
+
+    border-radius: 999px;
+
+    background: var(--rojo);
+
+    color: white;
+
+    box-shadow:
+        0 12px 25px rgba(209,3,15,.2);
+
+    font-size: 8px;
+
+    letter-spacing: .13em;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    animation:
+        botonSuave 2.4s ease-in-out infinite;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.boton-subir:hover {
+    animation-play-state: paused;
+
+    transform:
+        translateY(-2px)
+        scale(1.03);
+
+    box-shadow:
+        0 14px 30px rgba(209,3,15,.22);
+}
+
+.boton-subir:active {
+    transform: scale(.94);
+}
+
+.boton-subir input {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+
+    cursor: pointer;
+}
+
+.qr-area {
+    margin-top: 25px;
+}
+
+.qr-marco {
+    width: 116px;
+    height: 116px;
+
+    margin: 0 auto;
+
+    padding: 8px;
+
+    background: white;
+
+    border:
+        1px solid rgba(209,3,15,.25);
+
+    box-shadow:
+        var(--sombra);
+}
+
+.qr-placeholder {
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    place-items: center;
+
+    border:
+        5px dotted rgba(209,3,15,.35);
+
+    color: var(--rojo);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+.qr-area > p {
+    margin-top: 9px;
+
+    color: var(--rojo);
+
+    font-size: 7px;
+
+    letter-spacing: .17em;
+}
+
+.fotos-mensaje {
+    min-height: 16px;
+
+    margin-top: 10px;
+
+    color: var(--rojo);
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   DESEOS
+   ========================================================= */
+
+.deseos {
+    background: #fff7fa;
+}
+
+.deseos-fondo {
+    inset: 0;
+
+    z-index: -3;
+
+    background:
+        url("images/fondo-rosado.png")
+        center / cover no-repeat;
+
+    opacity: .25;
+}
+
+.deseos-contenido {
+    width: min(510px, 100%);
+}
+
+.deseos h2 {
+    margin-top: 14px;
+
+    color: var(--rojo);
+
+    font-family: "Joshico", cursive;
+
+    font-size:
+        clamp(36px, 9vw, 58px);
+
+    line-height: 1.02;
+
+    font-weight: normal;
+}
+
+.deseos-subtitulo {
+    margin:
+        14px auto 24px;
+
+    color: #79505f;
+
+    font-size: 11px;
+
+    line-height: 1.8;
+}
+
+.deseos-form {
+    width: min(390px, 100%);
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    text-align: left;
+}
+
+.deseos-form label {
+    color: var(--rojo);
+
+    font-size: 10px;
+
+    letter-spacing: .08em;
+}
+
+.deseos-form textarea {
+    width: 100%;
+
+    resize: vertical;
+
+    min-height: 118px;
+
+    padding: 14px;
+
+    border:
+        1px solid rgba(209,3,15,.24);
+
+    border-radius: 16px;
+
+    background:
+        rgba(255,255,255,.84);
+
+    color: var(--texto);
+
+    font-family: "Cinzel", serif;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+
+    outline: none;
+}
+
+.deseos-form textarea:focus {
+    border-color: var(--rojo);
+
+    box-shadow:
+        0 0 0 3px rgba(209,3,15,.08);
+}
+
+.deseos-form .boton-rojo {
+    align-self: center;
+
+    margin-top: 6px;
+}
+
+.deseo-mensaje {
+    min-height: 20px;
+
+    margin-top: 18px;
+
+    color: var(--rojo);
+
+    font-size: 10px;
+
+    line-height: 1.7;
+}
+
+.deseos-nota {
+    width: min(360px, 94%);
+
+    margin:
+        12px auto 0;
+
+    color: #96717d;
+
+    font-size: 8px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   RSVP
+   ========================================================= */
+
+.rsvp {
+    min-height: 100svh;
+
+    background: var(--rojo);
+
+    color: white;
+}
+
+.fondo-rsvp {
+    inset: 0;
+
+    z-index: -3;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(255,255,255,.15),
+            transparent 33%
+        ),
+        linear-gradient(
+            150deg,
+            #d1030f,
+            #b3020d
+        );
+
+    opacity: .25;
+}
+
+.rsvp-contenido {
+    width: min(500px, 100%);
+}
+
+.rsvp h2 {
+    color: white;
+}
+
+.rsvp .seccion-etiqueta {
+    color:
+        rgba(255,255,255,.82);
+}
+
+.rsvp-texto {
+    width: min(320px, 90%);
+
+    margin: 0 auto;
+
+    color:
+        rgba(255,255,255,.82);
+
+    font-size: 10px;
+
+    line-height: 1.9;
+}
+
+.rsvp-botones {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    width: min(300px, 100%);
+
+    margin:
+        25px auto 12px;
+}
+
+.rsvp-btn {
+    position: relative;
+
+    min-height: 48px;
+
+    border-radius: 999px;
+
+    color: var(--rojo);
+
+    background: white;
+
+    font-size: 8px;
+
+    letter-spacing: .1em;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 22px rgba(75,0,8,.16);
+
+    transition:
+        transform .25s ease,
+        opacity .25s ease,
+        box-shadow .25s ease;
+}
+
+.rsvp-btn.secundario {
+    color: white;
+
+    background: transparent;
+
+    border:
+        1px solid rgba(255,255,255,.5);
+
+    box-shadow: none;
+}
+
+.rsvp-btn:hover {
+    transform:
+        translateY(-2px)
+        scale(1.03);
+
+    box-shadow:
+        0 14px 30px rgba(75,0,8,.20);
+}
+
+.rsvp-btn:active {
+    transform: scale(.95);
+}
+
+.rsvp-btn.seleccionado {
+    transform: scale(1.025);
+}
+
+.rsvp-mensaje {
+    min-height: 17px;
+
+    color: white;
+
+    font-size: 8px;
+
+    letter-spacing: .08em;
+}
+
+
+/* =========================================================
+   CONTROL DE MÚSICA FLOTANTE
+   ========================================================= */
+
+.control-musica-flotante {
+    position: fixed;
+
+    right: 14px;
+    bottom: 16px;
+
+    z-index: 800;
+
+    width: 43px;
+    height: 43px;
+
+    display: grid;
+    place-items: center;
+
+    border:
+        1px solid rgba(209,3,15,.22);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.88);
+
+    box-shadow:
+        0 9px 25px rgba(60,20,30,.16);
+
+    opacity: 0;
+
+    transform: scale(.7);
+
+    pointer-events: none;
+
+    cursor: pointer;
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease;
+}
+
+.control-musica-flotante.visible {
+    opacity: 1;
+
+    transform: scale(1);
+
+    pointer-events: auto;
+}
+
+.control-musica-flotante span {
+    width: 25px;
+    height: 25px;
+
+    display: block;
+
+    border-radius: 50%;
+
+    background:
+        repeating-radial-gradient(
+            circle,
+            #f8c3d1 0 2px,
+            #f2a7bc 3px 4px
+        );
+}
+
+.control-musica-flotante.sonando span {
+    animation:
+        girar 2.4s linear infinite;
+}
+
+
+/* =========================================================
+   DECORACIONES QUE CONECTAN SECCIONES
+   ========================================================= */
+
+.fecha-lazo,
+.cuenta-lazo,
+.ubicacion-lazo,
+.dress-lazo,
+.deseos-lazo,
+.fotos-lazo,
+.rsvp-lazo {
+    position: absolute;
+
+    z-index: 20;
+
+    opacity: 1;
+}
+
+.fecha-lazo {
+    bottom: -95px;
+    right: -9%;
+
+    width: min(330px, 65vw);
+}
+
+.cuenta-lazo {
+    top: -95px;
+    bottom: auto;
+    left: -9%;
+
+    width: min(315px, 63vw);
+}
+
+.ubicacion-lazo {
+    bottom: -90px;
+    top: auto;
+    left: -12%;
+
+    width: min(320px, 63vw);
+}
+
+.dress-lazo {
+    top: -90px;
+    right: -12%;
+
+    width: min(330px, 65vw);
+}
+
+.deseos-lazo {
+    top: -95px;
+    bottom: auto;
+    right: -12%;
+
+    width: min(360px, 78vw);
+}
+
+.fotos-lazo {
+    bottom: -90px;
+    top: auto;
+    left: -12%;
+
+    width: min(340px, 67vw);
+}
+
+.rsvp-lazo {
+    top: -90px;
+    bottom: auto;
+    right: -12%;
+
+    width: min(350px, 68vw);
+}
+
+.fecha-fresa,
+.cuenta-fresa,
+.ubicacion-fresa,
+.dress-fresa,
+.deseos-fresa,
+.fotos-fresa-1,
+.fotos-fresa-2,
+.rsvp-fresa {
+    z-index: 20;
+}
+
+
+/* =========================================================
+   ELEMENTOS DECORATIVOS TRANSPARENTES
+   ========================================================= */
+
+.marco-imagen,
+.grafico-lazo,
+.grafico-fresa {
+    background: transparent !important;
+
+    mix-blend-mode: normal !important;
+
+    object-fit: contain !important;
+}
+
+
+/* =========================================================
+   ANIMACIONES
+   ========================================================= */
+
+@keyframes respirarPortada {
+    0%, 100% {
+        box-shadow:
+            0 10px 25px rgba(209,3,15,.18);
+    }
+
+    50% {
+        box-shadow:
+            0 14px 38px rgba(209,3,15,.42);
+    }
+}
+
+@keyframes brilloBoton {
+    0%, 55% {
+        left: -80%;
+    }
+
+    80%, 100% {
+        left: 135%;
+    }
+}
+
+@keyframes destelloEntrada {
+    0% {
+        transform: scale(.2);
+        opacity: 0;
+    }
+
+    35% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(2.3);
+        opacity: 0;
+    }
+}
+
+@keyframes girar {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes numeroCambio {
+    0% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.14);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes brilloMonograma {
+    0%, 100% {
+        transform: translate(0,0);
+        opacity: .35;
+    }
+
+    50% {
+        transform: translate(85px,70px);
+        opacity: .85;
+    }
+}
+
+@keyframes lazoFlotante {
+    0%,100% {
+        transform:
+            translateX(-50%)
+            translateY(0)
+            rotate(0deg);
+    }
+
+    50% {
+        transform:
+            translateX(-50%)
+            translateY(8px)
+            rotate(2deg);
+    }
+}
+
+@keyframes botonSuave {
+    0%, 100% {
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translateY(-2px)
+            scale(1.025);
+    }
+}
+
+
+/* =========================================================
+   TABLET / PC
+   ========================================================= */
+
+@media (min-width: 700px) {
+
+    .seccion {
+        padding-left: 45px;
+        padding-right: 45px;
+    }
+
+    .colores-dress {
+        flex-direction: row;
+
+        width: min(500px, 100%);
+    }
+
+    .color-opcion {
+        flex: 1;
+
+        justify-content: center;
+    }
+
+    .bienvenida-lazo {
+        width: min(340px, 40vw);
+    }
+
+    .fecha-lazo,
+    .dress-lazo,
+    .rsvp-lazo,
+    .fotos-lazo {
+        right: -7%;
+    }
+
+    .ubicacion-lazo,
+    .cuenta-lazo {
+        left: -7%;
+    }
+}
+
+
+/* =========================================================
+   MÓVILES
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    /*
+       PORTADA EN CELULAR
+
+       Mantiene cover para que no aparezca
+       ningún espacio rosado alrededor.
+    */
+
+    .portada {
+        min-height: 100svh;
+        height: 100dvh;
+    }
+
+    .imagen-portada {
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+        object-position: center center;
+    }
+
+    .boton-abrir {
+        bottom:
+            max(28px, env(safe-area-inset-bottom));
+
+        min-width: 210px;
+
+        font-size: 10px;
+
+        padding:
+            13px 22px;
+    }
+
+    .seccion {
+        min-height: auto;
+
+        padding:
+            72px 20px;
+    }
+
+    .bienvenida {
+        min-height: 100svh;
+
+        padding:
+            90px 20px 56px;
+    }
+
+    .bienvenida-lazo {
+        top: 5%;
+
+        width:
+            min(270px, 70vw);
+    }
+
+    .titulo-bienvenida {
+        margin-top: 125px;
+
+        font-size:
+            clamp(42px, 12vw, 62px);
+    }
+
+    .marco-fecha {
+        min-height: 325px;
+    }
+
+    .fecha {
+        min-height: 100svh;
+    }
+
+    .fecha-dia {
+        padding:
+            22px 28px;
+    }
+
+    .fecha-dia strong {
+        font-size: 88px;
+    }
+
+    .grafico-lazo {
+        opacity: .24;
+    }
+
+    .grafico-fresa {
+        opacity: .16;
+    }
+
+    .fecha-lazo,
+    .cuenta-lazo,
+    .ubicacion-lazo,
+    .dress-lazo,
+    .deseos-lazo,
+    .fotos-lazo,
+    .rsvp-lazo {
+        width:
+            min(250px, 65vw);
+    }
+
+    .contador {
+        gap: 5px;
+    }
+
+    .contador-item {
+        min-height: 82px;
+    }
+
+    .contador-item strong {
+        font-size:
+            clamp(20px, 7vw, 30px);
+    }
+}
+
+
+/* =========================================================
+   PANTALLAS MUY PEQUEÑAS
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .boton-abrir {
+        min-width: 190px;
+
+        padding:
+            12px 18px;
+
+        font-size: 9px;
+    }
+
+    .titulo-bienvenida {
+        font-size: 40px;
+    }
+
+    .contador-item {
+        min-height: 76px;
+    }
+
+    .contador-item span {
+        font-size: 5px;
+    }
+
+    .fecha-dia strong {
+        font-size: 80px;
+    }
+}
+
+
+/* =========================================================
+   PANTALLAS GRANDES
+   ========================================================= */
+
+@media (min-width: 1200px) {
+
+    .imagen-portada {
+        object-position: center center;
+    }
+
+    .boton-abrir {
+        bottom: 42px;
+    }
+
+    .bienvenida-contenido,
+    .fecha-contenido,
+    .ubicacion-contenido,
+    .dress-contenido,
+    .deseos-contenido,
+    .fotos-contenido,
+    .rsvp-contenido {
+        max-width: 650px;
+    }
+}
+
+
+/* =========================================================
+   REDUCIR MOVIMIENTO
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
