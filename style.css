@@ -36,7 +36,7 @@ html {
     background: #FFFFFF;
     width: 100%;
     max-width: 100%;
-    overflow-x: clip;
+    overflow-x: hidden;
 }
 
 body {
@@ -47,7 +47,7 @@ body {
     background: #FFFFFF;
     color: var(--texto);
     font-family: "Cinzel", serif;
-    overflow-x: clip;
+    overflow-x: hidden;
     position: relative;
 }
 
@@ -265,24 +265,16 @@ button {
 /* =========================================================
    SECCIONES GENERALES
    ========================================================= */
-
 .seccion {
     position: relative;
-
     width: 100%;
     max-width: 100%;
-
     min-height: 100svh;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: 64px 20px;
-
     overflow: hidden;
-
-    isolation: isolate;
 }
 
 .seccion::after {
@@ -2424,4 +2416,22 @@ button {
         width: 100%;
         max-width: 100%;
     }
+}
+
+/* =========================================================
+   CONTROL DE DESBORDAMIENTO DE ELEMENTOS DECORATIVOS
+   ========================================================= */
+
+.grafico-lazo,
+.grafico-fresa,
+.fondo-flotante,
+.fondo-suave,
+.fondo-imagen-seccion,
+.fondo-cuadritos,
+.fondo-cuenta,
+.monograma-fondo,
+.fondo-fotos,
+.fondo-rsvp,
+.deseos-fondo {
+    max-width: 100%;
 }
