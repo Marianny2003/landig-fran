@@ -401,7 +401,7 @@ button {
     transition:
         transform 1s cubic-bezier(.2,.8,.2,1);
 
-    z-index: 10;
+    z-index: 20;
 }
 
 .grafico-fresa {
