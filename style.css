@@ -18,6 +18,7 @@
     --rosa-claro: rgba(246, 173, 193, 0.28);
     --rosa-suave: #fff4f7;
     --texto: #5d2637;
+    --texto-suave: #79505f;
     --sombra: 0 18px 45px rgba(91, 28, 46, 0.13);
 }
 
@@ -34,19 +35,17 @@
 
 html {
     scroll-behavior: smooth;
-    background: #FFFFFF;
+    background: #fff;
     width: 100%;
-    max-width: 100%;
     overflow-x: hidden;
 }
 
 body {
     min-width: 320px;
     width: 100%;
-    max-width: 100%;
     margin: 0;
 
-    background: #FFFFFF;
+    background: #fff;
     color: var(--texto);
 
     font-family: "Cinzel", serif;
@@ -60,6 +59,11 @@ button,
 input,
 textarea {
     font: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
 }
 
 button {
@@ -90,8 +94,8 @@ button {
     background: #fdf0f0;
 
     transition:
-        opacity 0.8s ease,
-        transform 0.9s ease;
+        opacity .8s ease,
+        transform .9s ease;
 }
 
 .portada.salir {
@@ -100,14 +104,8 @@ button {
     pointer-events: none;
 }
 
-
-/* =========================================================
-   IMAGEN DE PORTADA
-   ========================================================= */
-
 .imagen-portada {
     position: absolute;
-
     inset: 0;
 
     width: 100%;
@@ -116,7 +114,6 @@ button {
     display: block;
 
     object-fit: contain;
-
     object-position: center center;
 
     background: #fdf0f0;
@@ -124,7 +121,7 @@ button {
 
 
 /* =========================================================
-   BOTÓN ABRIR INVITACIÓN
+   BOTÓN ABRIR
    ========================================================= */
 
 .boton-abrir {
@@ -140,32 +137,31 @@ button {
 
     padding: 14px 25px;
 
-    border: 1px solid rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255,255,255,.95);
     border-radius: 999px;
 
     color: #fff;
     background: var(--rojo);
 
     box-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.16),
-        0 0 0 rgba(209, 3, 15, 0);
+        0 8px 20px rgba(0,0,0,.16);
 
     font-family: "Cinzel", serif;
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 0.13em;
+    letter-spacing: .13em;
 
     cursor: pointer;
+
     overflow: hidden;
 
     transform: translateX(-50%);
 
-    animation:
-        flotarGlow 2.6s ease-in-out infinite;
+    animation: flotarGlow 2.6s ease-in-out infinite;
 
     transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+        transform .25s ease,
+        box-shadow .25s ease;
 }
 
 .boton-abrir::after {
@@ -181,25 +177,22 @@ button {
 
     transform: skewX(-22deg);
 
-    background: rgba(255, 255, 255, 0.35);
+    background: rgba(255,255,255,.35);
 
-    animation:
-        brilloBoton 3.2s ease-in-out infinite;
+    animation: brilloBoton 3.2s ease-in-out infinite;
 
     pointer-events: none;
 }
 
 @keyframes flotarGlow {
-
-    0%,
-    100% {
+    0%,100% {
         transform:
             translateX(-50%)
             translateY(0);
 
         box-shadow:
-            0 8px 20px rgba(0, 0, 0, 0.16),
-            0 0 0 rgba(209, 3, 15, 0);
+            0 8px 20px rgba(0,0,0,.16),
+            0 0 0 rgba(209,3,15,0);
     }
 
     50% {
@@ -208,52 +201,19 @@ button {
             translateY(-7px);
 
         box-shadow:
-            0 14px 28px rgba(0, 0, 0, 0.18),
-            0 0 18px rgba(209, 3, 15, 0.45),
-            0 0 35px rgba(209, 3, 15, 0.20);
+            0 14px 28px rgba(0,0,0,.18),
+            0 0 18px rgba(209,3,15,.45);
     }
 }
 
 @keyframes brilloBoton {
-
     0% {
         left: -80%;
     }
 
-    45%,
-    100% {
+    45%,100% {
         left: 130%;
     }
-}
-
-.boton-abrir:hover {
-    transform:
-        translateX(-50%)
-        translateY(-2px)
-        scale(1.04);
-
-    box-shadow:
-        0 12px 28px rgba(0, 0, 0, 0.18),
-        0 0 20px rgba(209, 3, 15, 0.55),
-        0 0 40px rgba(209, 3, 15, 0.25);
-}
-
-.boton-abrir:active {
-    transform:
-        translateX(-50%)
-        scale(0.94);
-}
-
-.boton-abrir.abriendo {
-    animation: none;
-
-    transform:
-        translateX(-50%)
-        scale(0.94);
-
-    box-shadow:
-        0 0 25px rgba(209, 3, 15, 0.6),
-        0 0 45px rgba(209, 3, 15, 0.35);
 }
 
 
@@ -304,27 +264,37 @@ button {
     background:
         radial-gradient(
             circle,
-            rgba(255,255,255,0.96) 0%,
-            rgba(246,173,193,0.85) 25%,
+            rgba(255,255,255,.96) 0%,
+            rgba(246,173,193,.85) 25%,
             rgba(246,173,193,0) 70%
         );
 
-    transform: scale(0.25);
+    transform: scale(.25);
 
     animation:
-        destelloEntrada 0.9s ease forwards;
+        destelloEntrada .9s ease forwards;
 }
 
-.transicion-entrada.salir {
-    opacity: 0;
+@keyframes destelloEntrada {
+    0% {
+        transform: scale(.2);
+        opacity: 0;
+    }
 
-    transition:
-        opacity 0.35s ease;
+    35% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(2.3);
+        opacity: 0;
+    }
 }
 
 
 /* =========================================================
-   SECCIONES GENERALES
+   SECCIONES
    ========================================================= */
 
 .seccion {
@@ -339,19 +309,9 @@ button {
     align-items: center;
     justify-content: center;
 
-    padding: 64px 20px;
+    padding: 76px 20px;
 
-    /*
-       IMPORTANTE:
-       Permitimos que los lazos salgan
-       de una sección y entren visualmente
-       en la siguiente.
-    */
     overflow: visible;
-}
-
-.seccion::after {
-    display: none;
 }
 
 
@@ -366,10 +326,9 @@ button {
 .fondo-imagen-seccion,
 .fondo-cuadritos,
 .fondo-cuenta,
-.monograma-fondo,
 .fondo-fotos,
 .fondo-rsvp,
-.deseos-fondo {
+.fondo-regalos {
     position: absolute;
     pointer-events: none;
 }
@@ -380,29 +339,39 @@ button {
 }
 
 
-/*
-   LOS LAZOS DECORATIVOS
-   -----------------------------------------
-   NO llevan opacidad.
-   Deben verse sólidos.
-*/
+/* =========================================================
+   LAZOS
+   ========================================================= */
 
 .grafico-lazo {
-    width: min(280px, 54vw);
-    height: 100%;
+    width: min(270px, 30vw);
+    height: auto;
 
-    opacity: 1;
+    opacity: 1 !important;
+
+    display: block;
+
+    object-fit: contain !important;
+
+    z-index: 100;
+
+    pointer-events: none;
 
     filter:
         drop-shadow(
-            0 13px 20px rgba(112,30,53,0.11)
+            0 12px 18px rgba(112,30,53,.13)
         );
 
-    transition:
-        transform 1s cubic-bezier(.2,.8,.2,1);
+    transform-origin: center;
 
-    z-index: 20;
+    transition:
+        transform .8s ease;
 }
+
+
+/* =========================================================
+   FRESAS
+   ========================================================= */
 
 .grafico-fresa {
     width: 70px;
@@ -410,27 +379,12 @@ button {
 
     opacity: .22;
 
+    z-index: 15;
+
     filter:
         drop-shadow(
-            0 8px 14px rgba(112,30,53,0.12)
+            0 8px 14px rgba(112,30,53,.12)
         );
-
-    transition:
-        transform 1s cubic-bezier(.2,.8,.2,1);
-
-    z-index: 12;
-}
-
-.seccion.activa .grafico-lazo {
-    transform:
-        translate3d(0,0,0)
-        rotate(0deg);
-}
-
-.seccion.activa .grafico-fresa {
-    transform:
-        translateY(0)
-        rotate(0deg);
 }
 
 
@@ -443,12 +397,13 @@ button {
 .cuenta-contenido,
 .ubicacion-contenido,
 .dress-contenido,
-.deseos-contenido,
-.fotos-contenido,
+.regalos-contenido,
 .rsvp-contenido {
     position: relative;
 
-    z-index: 30;
+    z-index: 200;
+
+    width: 100%;
 
     text-align: center;
 
@@ -457,8 +412,8 @@ button {
     transform: translateY(28px);
 
     transition:
-        opacity 0.75s ease,
-        transform 0.85s cubic-bezier(.2,.8,.2,1);
+        opacity .75s ease,
+        transform .85s cubic-bezier(.2,.8,.2,1);
 }
 
 .seccion.activa .bienvenida-contenido,
@@ -466,11 +421,9 @@ button {
 .seccion.activa .cuenta-contenido,
 .seccion.activa .ubicacion-contenido,
 .seccion.activa .dress-contenido,
-.seccion.activa .deseos-contenido,
-.seccion.activa .fotos-contenido,
+.seccion.activa .regalos-contenido,
 .seccion.activa .rsvp-contenido {
     opacity: 1;
-
     transform: translateY(0);
 }
 
@@ -500,20 +453,12 @@ button {
 .bienvenida {
     min-height: 100svh;
 
-    isolation: isolate;
+    background:
+        url("images/fondo-rosado.PNG")
+        center / cover no-repeat;
 
-    background-color: #f6adc1;
-
-    background-image:
-        url("images/fondo-rosado.PNG");
-
-    background-repeat: no-repeat;
-
-    background-position: center center;
-
-    background-size: cover;
-
-    padding: 78px 24px;
+    padding:
+        78px 24px;
 }
 
 .fondo-bienvenida {
@@ -521,40 +466,7 @@ button {
 }
 
 .bienvenida-contenido {
-    width: min(520px, 100%);
-
-    margin-inline: auto;
-}
-
-.bienvenida-lazo {
-    position: absolute;
-
-    top: 7%;
-    left: 50%;
-
-    width: min(300px, 68vw);
-
-    opacity: 1;
-
-    z-index: 20;
-
-    transform:
-        translateX(-50%)
-        rotate(0deg);
-
-    animation:
-        lazoFlotante 6s ease-in-out infinite;
-}
-
-.bienvenida-fresa {
-    position: absolute;
-
-    left: 4%;
-    bottom: 9%;
-
-    width: 58px;
-
-    opacity: .22;
+    max-width: 520px;
 }
 
 .titulo-bienvenida {
@@ -562,7 +474,7 @@ button {
 
     z-index: 5;
 
-    margin-top: 10px;
+    margin-top: 14px;
 
     font-family: "Joshico", cursive;
 
@@ -576,22 +488,39 @@ button {
     color: var(--rojo);
 
     text-shadow:
-        0 7px 24px rgba(209,3,15,0.12);
+        0 7px 24px rgba(209,3,15,.12);
 }
 
 .mensaje-bienvenida {
-    width: min(330px, 92%);
+    width: min(330px,92%);
 
     margin:
         18px auto 0;
 
     color: var(--rojo);
 
-    font-family: "Cinzel", serif;
-
     font-size: 11px;
 
     line-height: 1.8;
+}
+
+.frase-especial {
+    width: min(360px,92%);
+
+    margin:
+        24px auto 0;
+
+    color: var(--rojo);
+
+    font-family: "Joshico", cursive;
+
+    font-size: clamp(22px,5vw,30px);
+
+    line-height: 1.25;
+}
+
+.frase-especial span {
+    color: var(--rojo);
 }
 
 
@@ -606,7 +535,7 @@ button {
 
     gap: 8px;
 
-    margin-top: 24px;
+    margin-top: 26px;
 }
 
 .boton-musica {
@@ -630,23 +559,6 @@ button {
 
     animation:
         botonSuave 2.8s ease-in-out infinite;
-
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease;
-}
-
-.boton-musica:hover {
-    transform:
-        translateY(-3px)
-        scale(1.03);
-
-    box-shadow:
-        0 14px 30px rgba(209,3,15,.22);
-}
-
-.boton-musica:active {
-    transform: scale(.91);
 }
 
 .disco {
@@ -681,22 +593,18 @@ button {
     display: grid;
     place-items: center;
 
-    padding-left: 1px;
-
     border-radius: 50%;
 
     background: var(--rojo);
     color: white;
 
-    font-family: Arial, sans-serif;
+    font-family: Arial,sans-serif;
 
     font-size: 7px;
 }
 
 .texto-musica {
     color: var(--rojo);
-
-    font-family: "Cinzel", serif;
 
     font-size: 7px;
 
@@ -709,19 +617,7 @@ button {
    ========================================================= */
 
 .fecha {
-    position: relative;
-
-    min-height: 100svh;
-
-    isolation: isolate;
-
     background: #f9d9e4;
-
-    /*
-       IMPORTANTE:
-       No recortar el lazo.
-    */
-    overflow: visible;
 }
 
 .fondo-fecha {
@@ -729,36 +625,26 @@ button {
 }
 
 .fecha-contenido {
-    position: relative;
-
-    z-index: 30;
-
-    width: min(520px, 100%);
-
-    margin-inline: auto;
+    max-width: 520px;
 }
 
 .fecha .seccion-etiqueta {
-    font-family: "Joshico", cursive;
+    font-family: "Joshico",cursive;
 
     font-size:
-        clamp(28px, 8vw, 44px);
-
-    font-weight: normal;
+        clamp(28px,8vw,44px);
 
     letter-spacing: 0;
 
     line-height: 1;
 
     color: var(--rojo);
-
-    text-transform: none;
 }
 
 .marco-fecha {
     position: relative;
 
-    width: min(370px, 94vw);
+    width: min(370px,94vw);
 
     min-height: 330px;
 
@@ -767,8 +653,6 @@ button {
 
     display: grid;
     place-items: center;
-
-    z-index: 5;
 }
 
 .marco-imagen {
@@ -781,27 +665,12 @@ button {
 
     object-fit: contain;
 
-    background: transparent;
-
-    opacity: 1;
+    z-index: 5;
 
     filter:
         drop-shadow(
             0 10px 22px rgba(90,24,40,.08)
         );
-
-    transform: scale(1);
-
-    mix-blend-mode: normal;
-
-    transition:
-        transform .8s ease;
-
-    z-index: 5;
-}
-
-.seccion.activa .marco-imagen {
-    transform: scale(1.02);
 }
 
 .fecha-dia {
@@ -822,21 +691,15 @@ button {
 
 .dia-pequeno {
     font-size: 11px;
-
     letter-spacing: .24em;
-
     font-weight: 600;
-
-    white-space: nowrap;
 }
 
 .fecha-dia strong {
-    margin: 0;
-
-    font-family: "Joshico", cursive;
+    font-family: "Joshico",cursive;
 
     font-size:
-        clamp(72px, 20vw, 112px);
+        clamp(72px,20vw,112px);
 
     line-height: .9;
 
@@ -845,26 +708,17 @@ button {
 
 .fecha-dia .mes {
     font-size: 11px;
-
     letter-spacing: .18em;
-
     font-weight: 600;
-
-    white-space: nowrap;
 }
 
 .fecha-dia .anio {
-    margin-top: 2px;
-
     font-size: 9px;
-
     letter-spacing: .3em;
-
-    white-space: nowrap;
 }
 
 .fecha-frase {
-    width: min(320px, 90%);
+    width: min(320px,90%);
 
     margin:
         8px auto 18px;
@@ -878,21 +732,25 @@ button {
 
 
 /* =========================================================
-   BOTONES
+   BOTONES GENERALES
    ========================================================= */
 
 .boton-linea,
 .boton-rojo,
-.boton-subir {
+.boton-subir,
+.rsvp-btn {
     cursor: pointer;
 
     transition:
         transform .25s ease,
-        box-shadow .25s ease,
-        background-color .25s ease;
+        box-shadow .25s ease;
 }
 
 .boton-linea {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     padding: 11px 18px;
 
     border:
@@ -908,23 +766,15 @@ button {
     font-size: 8px;
 
     letter-spacing: .13em;
-}
 
-.boton-linea:hover {
-    transform: translateY(-3px);
-
-    background:
-        rgba(255,255,255,.95);
-
-    box-shadow:
-        0 12px 26px rgba(91,28,46,.16);
-}
-
-.boton-linea:active {
-    transform: scale(.94);
+    text-decoration: none;
 }
 
 .boton-rojo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     padding: 14px 23px;
 
     border-radius: 999px;
@@ -940,28 +790,19 @@ button {
 
     letter-spacing: .15em;
 
-    animation:
-        botonSuave 2.4s ease-in-out infinite;
+    text-decoration: none;
 }
 
+.boton-linea:hover,
 .boton-rojo:hover {
-    animation-play-state: paused;
-
     transform:
         translateY(-2px)
         scale(1.03);
-
-    box-shadow:
-        0 14px 30px rgba(209,3,15,.22);
-}
-
-.boton-rojo:active {
-    transform: scale(.94);
 }
 
 
 /* =========================================================
-   CUENTA REGRESIVA
+   CUENTA
    ========================================================= */
 
 .cuenta {
@@ -970,8 +811,6 @@ button {
     background: var(--rojo);
 
     color: white;
-
-    overflow: visible;
 }
 
 .fondo-cuenta {
@@ -998,17 +837,17 @@ button {
 }
 
 .cuenta-contenido {
-    width: min(650px, 100%);
+    max-width: 650px;
 }
 
 .cuenta h2,
 .rsvp h2 {
     margin-top: 13px;
 
-    font-family: "Joshico", cursive;
+    font-family: "Joshico",cursive;
 
     font-size:
-        clamp(38px, 10vw, 60px);
+        clamp(38px,10vw,60px);
 
     line-height: .95;
 
@@ -1024,7 +863,7 @@ button {
     display: grid;
 
     grid-template-columns:
-        repeat(4, 1fr);
+        repeat(4,1fr);
 
     gap: 8px;
 
@@ -1052,33 +891,19 @@ button {
         rgba(255,255,255,.08);
 
     cursor: pointer;
-
-    transition:
-        transform .25s ease,
-        background .25s ease,
-        box-shadow .25s ease;
 }
 
-.contador-item:hover {
-    transform:
-        translateY(-3px)
-        scale(1.02);
-
-    box-shadow:
-        0 12px 26px rgba(91,28,46,.16);
-}
-
-.contador-item:active,
+.contador-item:hover,
 .contador-item.pulsado {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
 
     background:
-        rgba(255,255,255,.17);
+        rgba(255,255,255,.15);
 }
 
 .contador-item strong {
     font-size:
-        clamp(23px, 7vw, 38px);
+        clamp(23px,7vw,38px);
 
     font-weight: 500;
 }
@@ -1091,11 +916,6 @@ button {
     letter-spacing: .13em;
 
     opacity: .82;
-}
-
-.contador-item.cambio strong {
-    animation:
-        numeroCambio .45s ease;
 }
 
 .micro-mensaje {
@@ -1115,8 +935,6 @@ button {
 
 .ubicacion {
     background: #fff7f9;
-
-    overflow: visible;
 }
 
 .fondo-ubicacion {
@@ -1135,25 +953,21 @@ button {
     opacity: .34;
 }
 
-.ubicacion::before {
-    display: none;
-}
-
 .ubicacion-contenido {
-    width: min(480px, 100%);
+    max-width: 480px;
 }
 
 .ubicacion h2,
 .dresscode h2,
-.fotos h2 {
+.regalos h2 {
     margin-top: 11px;
 
     color: var(--rojo);
 
-    font-family: "Joshico", cursive;
+    font-family: "Joshico",cursive;
 
     font-size:
-        clamp(42px, 11vw, 64px);
+        clamp(42px,11vw,64px);
 
     font-weight: normal;
 
@@ -1161,7 +975,7 @@ button {
 }
 
 .ubicacion-dato {
-    width: min(310px, 100%);
+    width: min(310px,100%);
 
     margin:
         15px auto 23px;
@@ -1183,13 +997,11 @@ button {
 
 .ubicacion-dato strong {
     color: var(--rojo);
-
     font-size: 11px;
 }
 
 .ubicacion-dato span {
     font-size: 9px;
-
     color: #79505f;
 }
 
@@ -1199,46 +1011,21 @@ button {
    ========================================================= */
 
 .dresscode {
-    position: relative;
-
     background: transparent;
-
-    isolation: isolate;
-
-    overflow: visible;
 }
 
 .dresscode .fondo-cuadritos {
-    position: absolute;
-
     inset: 0;
 
     z-index: 0;
 
-    display: block;
-
-    background-image:
-        url("images/cuadritos.PNG");
-
-    background-repeat: no-repeat;
-
-    background-position: center center;
-
-    background-size: cover;
-
-    opacity: 1;
-
-    pointer-events: none;
+    background:
+        url("images/cuadritos.PNG")
+        center / cover no-repeat;
 }
 
 .dress-contenido {
-    width: min(470px, 100%);
-}
-
-.dresscode .dress-contenido {
-    position: relative;
-
-    z-index: 30;
+    max-width: 470px;
 }
 
 .dress-subtitulo {
@@ -1255,15 +1042,13 @@ button {
 
     gap: 10px;
 
-    width: min(300px, 100%);
+    width: min(300px,100%);
 
     margin:
         25px auto 14px;
 }
 
 .color-opcion {
-    position: relative;
-
     min-height: 50px;
 
     display: flex;
@@ -1291,18 +1076,21 @@ button {
 
     transition:
         transform .25s ease,
-        border-color .25s ease,
-        background .25s ease,
         box-shadow .25s ease;
 }
 
-.color-opcion:hover {
+.color-opcion:hover,
+.color-opcion.seleccionado {
     transform:
-        translateY(-3px)
+        translateY(-2px)
         scale(1.02);
 
+    border-color: var(--rojo);
+
+    background: rgba(255,255,255,.98);
+
     box-shadow:
-        0 12px 26px rgba(91,28,46,.16);
+        0 10px 24px rgba(91,28,46,.12);
 }
 
 .color-opcion span {
@@ -1322,7 +1110,6 @@ button {
 
 .color-opcion.blanco span {
     background: white;
-
     border-color: #ead6dd;
 }
 
@@ -1332,18 +1119,6 @@ button {
 
 .color-opcion.rojo span {
     background: var(--rojo);
-}
-
-.color-opcion.seleccionado {
-    transform: translateX(6px);
-
-    border-color: var(--rojo);
-
-    background:
-        rgba(255,255,255,.98);
-
-    box-shadow:
-        0 8px 22px rgba(90,30,45,.1);
 }
 
 .dress-mensaje {
@@ -1358,311 +1133,133 @@ button {
 
 
 /* =========================================================
-   FOTOS
+   REGALOS
    ========================================================= */
 
-.fotos {
-    background: #fff8fa;
-
-    overflow: visible;
-}
-
-.fondo-fotos {
-    inset: 0;
-
-    z-index: 0;
-
-    background:
-        linear-gradient(
-            rgba(255,249,251,.77),
-            rgba(255,249,251,.88)
-        ),
-        url("images/cuadritos.PNG")
-        center / cover;
-}
-
-.fotos-contenido {
-    width: min(480px, 100%);
-}
-
-.fotos-texto {
-    width: min(320px, 90%);
-
-    margin:
-        13px auto 20px;
-
-    color: #74505d;
-
-    font-size: 10px;
-
-    line-height: 1.9;
-}
-
-.boton-subir {
+.regalos {
     position: relative;
 
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    min-width: 165px;
-    min-height: 45px;
-
-    padding:
-        12px 22px;
-
-    border-radius: 999px;
-
-    background: var(--rojo);
-
-    color: white;
-
-    box-shadow:
-        0 12px 25px rgba(209,3,15,.2);
-
-    font-size: 8px;
-
-    letter-spacing: .13em;
-
-    cursor: pointer;
-
-    overflow: hidden;
-
-    animation:
-        botonSuave 2.4s ease-in-out infinite;
-
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease;
+    background: #f9d9e4;
 }
 
-.boton-subir:hover {
-    animation-play-state: paused;
-
-    transform:
-        translateY(-2px)
-        scale(1.03);
-
-    box-shadow:
-        0 14px 30px rgba(209,3,15,.22);
-}
-
-.boton-subir:active {
-    transform: scale(.94);
-}
-
-.boton-subir input {
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    opacity: 0;
-
-    cursor: pointer;
-}
-
-.qr-area {
-    margin-top: 25px;
-}
-
-.qr-marco {
-    width: 116px;
-    height: 116px;
-
-    margin: 0 auto;
-
-    padding: 8px;
-
-    background: white;
-
-    border:
-        1px solid rgba(209,3,15,.25);
-
-    box-shadow:
-        var(--sombra);
-}
-
-.qr-placeholder {
-    width: 100%;
-    height: 100%;
-
-    display: grid;
-    place-items: center;
-
-    border:
-        5px dotted rgba(209,3,15,.35);
-
-    color: var(--rojo);
-
-    font-family: Arial, sans-serif;
-
-    font-size: 20px;
-
-    font-weight: bold;
-}
-
-.qr-area > p {
-    margin-top: 9px;
-
-    color: var(--rojo);
-
-    font-size: 7px;
-
-    letter-spacing: .17em;
-}
-
-.fotos-mensaje {
-    min-height: 16px;
-
-    margin-top: 10px;
-
-    color: var(--rojo);
-
-    font-size: 8px;
-}
-
-
-/* =========================================================
-   DESEOS
-   ========================================================= */
-
-.deseos {
-    background: #fff7fa;
-
-    overflow: visible;
-}
-
-.deseos-fondo {
+.fondo-regalos {
     inset: 0;
 
     z-index: 0;
 
     background:
-        url("images/fondo-rosado.PNG")
-        center / cover no-repeat;
-
-    opacity: .25;
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(255,255,255,.72),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(255,255,255,.55),
+            transparent 28%
+        );
 }
 
-.deseos-contenido {
-    width: min(510px, 100%);
+.regalos-contenido {
+    max-width: 520px;
 }
 
-.deseos h2 {
-    margin-top: 14px;
-
-    color: var(--rojo);
-
-    font-family: "Joshico", cursive;
-
+.regalos h2 {
     font-size:
-        clamp(36px, 9vw, 58px);
-
-    line-height: 1.02;
-
-    font-weight: normal;
+        clamp(38px,9vw,58px);
 }
 
-.deseos-subtitulo {
+.regalos-subtitulo {
+    width: min(350px,92%);
+
     margin:
-        14px auto 24px;
+        17px auto 24px;
 
     color: #79505f;
 
-    font-size: 11px;
+    font-size: 10px;
 
     line-height: 1.8;
 }
 
-.deseos-form {
-    width: min(390px, 100%);
+.regalos-lista {
+    width: min(390px,100%);
 
     margin: 0 auto;
 
     display: flex;
     flex-direction: column;
 
-    gap: 10px;
-
-    text-align: left;
+    gap: 12px;
 }
 
-.deseos-form label {
-    color: var(--rojo);
+.regalo-item {
+    display: flex;
+    align-items: center;
 
-    font-size: 10px;
+    gap: 15px;
 
-    letter-spacing: .08em;
-}
-
-.deseos-form textarea {
-    width: 100%;
-
-    resize: vertical;
-
-    min-height: 118px;
-
-    padding: 14px;
+    padding: 16px 19px;
 
     border:
-        1px solid rgba(209,3,15,.24);
+        1px solid rgba(209,3,15,.17);
 
-    border-radius: 16px;
+    border-radius: 20px;
 
     background:
-        rgba(255,255,255,.84);
+        rgba(255,255,255,.72);
 
-    color: var(--texto);
-
-    font-family: "Cinzel", serif;
-
-    font-size: 11px;
-
-    line-height: 1.7;
-
-    outline: none;
-}
-
-.deseos-form textarea:focus {
-    border-color: var(--rojo);
+    text-align: left;
 
     box-shadow:
-        0 0 0 3px rgba(209,3,15,.08);
+        0 10px 25px rgba(91,28,46,.07);
 }
 
-.deseos-form .boton-rojo {
-    align-self: center;
+.regalo-icono {
+    width: 38px;
+    height: 38px;
 
-    margin-top: 6px;
+    flex: 0 0 38px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    color: white;
+
+    background: var(--rojo);
+
+    font-size: 17px;
 }
 
-.deseo-mensaje {
-    min-height: 20px;
-
-    margin-top: 18px;
+.regalo-item strong {
+    display: block;
 
     color: var(--rojo);
 
-    font-size: 10px;
-
-    line-height: 1.7;
+    font-size: 11px;
 }
 
-.deseos-nota {
-    width: min(360px, 94%);
+.regalo-item p {
+    margin-top: 4px;
 
-    margin:
-        12px auto 0;
+    color: #79505f;
 
-    color: #96717d;
+    font-size: 9px;
+}
 
-    font-size: 8px;
+.regalos-frase {
+    margin-top: 25px;
 
-    line-height: 1.7;
+    color:  var(--rojo);
+
+
+    font-family: "Joshico",cursive;
+
+    font-size: 18px;
+
+    line-height: 1.35;
 }
 
 
@@ -1671,17 +1268,11 @@ button {
    ========================================================= */
 
 .rsvp {
-    position: relative;
-
     min-height: 100svh;
 
     background: var(--rojo);
 
     color: white;
-
-    isolation: isolate;
-
-    overflow: visible;
 }
 
 .fondo-rsvp {
@@ -1700,16 +1291,16 @@ button {
             #d1030f,
             #b3020d
         );
-
-    opacity: 1;
 }
 
 .rsvp-contenido {
-    width: min(500px, 100%);
+    max-width: 500px;
 }
 
 .rsvp h2 {
     color: white;
+
+    margin-top: 15px;
 }
 
 .rsvp .seccion-etiqueta {
@@ -1718,9 +1309,10 @@ button {
 }
 
 .rsvp-texto {
-    width: min(320px, 90%);
+    width: min(320px,90%);
 
-    margin: 0 auto;
+    margin:
+        17px auto 0;
 
     color:
         rgba(255,255,255,.82);
@@ -1730,22 +1322,57 @@ button {
     line-height: 1.9;
 }
 
+.rsvp-fecha-limite {
+    width: min(320px,92%);
+
+    margin:
+        23px auto 0;
+
+    padding:
+        12px 16px;
+
+    border:
+        1px solid rgba(255,255,255,.27);
+
+    border-radius: 15px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    color:
+        rgba(255,255,255,.8);
+
+    font-size: 7px;
+
+    letter-spacing: .14em;
+
+    line-height: 1.8;
+}
+
+.rsvp-fecha-limite strong {
+    color: white;
+
+    font-size: 8px;
+}
+
 .rsvp-botones {
     display: flex;
     flex-direction: column;
 
     gap: 10px;
 
-    width: min(300px, 100%);
+    width: min(300px,100%);
 
     margin:
-        25px auto 12px;
+        22px auto 18px;
 }
 
 .rsvp-btn {
-    position: relative;
-
     min-height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     border-radius: 999px;
 
@@ -1757,15 +1384,10 @@ button {
 
     letter-spacing: .1em;
 
-    cursor: pointer;
+    text-decoration: none;
 
     box-shadow:
         0 10px 22px rgba(75,0,8,.16);
-
-    transition:
-        transform .25s ease,
-        opacity .25s ease,
-        box-shadow .25s ease;
 }
 
 .rsvp-btn.secundario {
@@ -1783,605 +1405,180 @@ button {
     transform:
         translateY(-2px)
         scale(1.03);
-
-    box-shadow:
-        0 14px 30px rgba(75,0,8,.20);
 }
 
-.rsvp-btn:active {
-    transform: scale(.95);
-}
+.contacto-rsvp {
+    margin-top: 24px;
 
-.rsvp-btn.seleccionado {
-    transform: scale(1.025);
-}
+    display: flex;
+    flex-direction: column;
 
-.rsvp-mensaje {
-    min-height: 17px;
+    align-items: center;
 
-    color: white;
+    gap: 5px;
+
+    color:
+        rgba(255,255,255,.82);
 
     font-size: 8px;
+
+    line-height: 1.5;
+}
+
+.contacto-rsvp strong {
+    color: white;
+
+    font-size: 10px;
+}
+
+.contacto-rsvp a {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 10px;
 
     letter-spacing: .08em;
 }
 
+.cierre {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 28px;
+}
+
+.cierre span {
+    width: 42px;
+    height: 1px;
+
+    background:
+        rgba(255,255,255,.45);
+}
+
 
 /* =========================================================
-   LAZOS QUE CONECTAN LAS SECCIONES
+   POSICIÓN DE LOS LAZOS
    ========================================================= */
 
-/*
-   TODOS LOS LAZOS:
-   - sólidos
-   - sin opacidad
-   - encima del fondo
-   - pueden salir de la sección
-*/
-
-.fecha-lazo,
-.cuenta-lazo,
-.ubicacion-lazo,
-.dress-lazo,
-.deseos-lazo,
-.fotos-lazo,
-.rsvp-lazo {
-    position: absolute;
-
-    z-index: 25;
-
-    opacity: 1 !important;
-
-    visibility: visible;
-
-    display: block;
-
-    pointer-events: none;
-
-    user-select: none;
-
-    background: transparent !important;
-
-    mix-blend-mode: normal !important;
-
-    filter:
-        drop-shadow(
-            0 13px 20px rgba(112,30,53,0.12)
-        );
-}
-
-
-/* ---------------------------------------------------------
-   FECHA → CUENTA
-   --------------------------------------------------------- */
-
-.fecha-lazo {
-    bottom: -95px;
-    right: -9%;
-
-    width: min(330px, 65vw);
-
-    z-index: 25;
-}
-
-
-/* ---------------------------------------------------------
-   CUENTA → UBICACIÓN
-   --------------------------------------------------------- */
+/* FECHA → CUENTA */
 
 .cuenta-lazo {
-    top: -95px;
-    bottom: auto;
-    left: -9%;
+    right: 2%;
+    bottom: -72px;
 
-    width: min(315px, 63vw);
+    width: min(285px,28vw);
 
-    z-index: 25;
+    transform:
+        rotate(-4deg);
 }
 
 
-/* ---------------------------------------------------------
-   UBICACIÓN → DRESS CODE
-   --------------------------------------------------------- */
+/* CUENTA → UBICACIÓN */
+
+.cuenta-conector {
+    display: block;
+
+    left: 2%;
+    top: -72px;
+
+    width: min(270px,27vw);
+
+    transform:
+        rotate(4deg);
+}
+
+
+/* UBICACIÓN → DRESS */
 
 .ubicacion-lazo {
-    bottom: -90px;
-    top: auto;
-    left: -12%;
+    right: 2%;
+    bottom: -72px;
 
-    width: min(320px, 63vw);
+    width: min(285px,28vw);
 
-    z-index: 25;
+    transform:
+        rotate(-4deg);
 }
 
 
-/* ---------------------------------------------------------
-   DRESS CODE → DESEOS
-   --------------------------------------------------------- */
+/* DRESS → REGALOS */
 
 .dress-lazo {
-    top: -90px;
-    right: -12%;
+    left: 2%;
+    top: -72px;
 
-    width: min(330px, 65vw);
+    width: min(285px,28vw);
 
-    z-index: 25;
+    transform:
+        rotate(4deg);
 }
 
 
-/* ---------------------------------------------------------
-   DESEOS → FOTOS
-   --------------------------------------------------------- */
+/* REGALOS → RSVP */
 
-.deseos-lazo {
-    top: -95px;
-    bottom: auto;
-    right: -12%;
+.regalos-lazo {
+    left: 2%;
+    top: -72px;
 
-    width: min(360px, 78vw);
+    width: min(285px,28vw);
 
-    z-index: 25;
+    transform:
+        rotate(4deg);
 }
 
 
-/* ---------------------------------------------------------
-   FOTOS → RSVP
-   --------------------------------------------------------- */
-
-.fotos-lazo {
-    bottom: -90px;
-    top: auto;
-    left: -12%;
-
-    width: min(340px, 67vw);
-
-    z-index: 25;
-}
-
-
-/* ---------------------------------------------------------
-   RSVP
-   --------------------------------------------------------- */
+/* RSVP */
 
 .rsvp-lazo {
-    top: -90px;
-    bottom: auto;
-    right: -12%;
+    right: 2%;
+    top: -72px;
 
-    width: min(350px, 68vw);
+    width: min(290px,29vw);
 
-    z-index: 25;
+    transform:
+        rotate(-4deg);
 }
 
 
 /* =========================================================
-   FRESAS DECORATIVAS
+   FRESAS
    ========================================================= */
 
-.fecha-fresa,
-.cuenta-fresa,
-.ubicacion-fresa,
-.dress-fresa,
-.deseos-fresa,
-.fotos-fresa-1,
-.fotos-fresa-2,
+.ubicacion-fresa-1 {
+    left: 6%;
+    top: 17%;
+}
+
+.ubicacion-fresa-2 {
+    right: 7%;
+    bottom: 15%;
+
+    transform: rotate(25deg);
+}
+
+.dress-fresa {
+    right: 8%;
+    bottom: 13%;
+
+    transform: rotate(-18deg);
+}
+
+.regalos-fresa {
+    left: 7%;
+    bottom: 15%;
+
+    transform: rotate(-18deg);
+}
+
 .rsvp-fresa {
-    z-index: 22;
-}
+    left: 7%;
+    bottom: 14%;
 
-
-/* =========================================================
-   ELEMENTOS DECORATIVOS
-   ========================================================= */
-
-.marco-imagen,
-.grafico-lazo,
-.grafico-fresa {
-    background: transparent !important;
-
-    mix-blend-mode: normal !important;
-
-    object-fit: contain !important;
-}
-
-
-/* =========================================================
-   ANIMACIONES
-   ========================================================= */
-
-@keyframes destelloEntrada {
-
-    0% {
-        transform: scale(.2);
-        opacity: 0;
-    }
-
-    35% {
-        transform: scale(1);
-        opacity: 1;
-    }
-
-    100% {
-        transform: scale(2.3);
-        opacity: 0;
-    }
-}
-
-@keyframes girar {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes numeroCambio {
-
-    0% {
-        transform: scale(1);
-    }
-
-    45% {
-        transform: scale(1.14);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-@keyframes brilloMonograma {
-
-    0%,
-    100% {
-        transform: translate(0,0);
-        opacity: .35;
-    }
-
-    50% {
-        transform: translate(85px,70px);
-        opacity: .85;
-    }
-}
-
-@keyframes lazoFlotante {
-
-    0%,
-    100% {
-        transform:
-            translateX(-50%)
-            translateY(0)
-            rotate(0deg);
-    }
-
-    50% {
-        transform:
-            translateX(-50%)
-            translateY(8px)
-            rotate(2deg);
-    }
-}
-
-@keyframes botonSuave {
-
-    0%,
-    100% {
-        transform:
-            translateY(0)
-            scale(1);
-    }
-
-    50% {
-        transform:
-            translateY(-2px)
-            scale(1.025);
-    }
-}
-
-
-/* =========================================================
-   TABLET / PC
-   ========================================================= */
-
-@media (min-width: 700px) {
-
-    .seccion {
-        padding-left: 45px;
-        padding-right: 45px;
-    }
-
-    .colores-dress {
-        flex-direction: row;
-
-        width: min(500px, 100%);
-    }
-
-    .color-opcion {
-        flex: 1;
-
-        justify-content: center;
-    }
-
-    .bienvenida-lazo {
-        width: min(340px, 40vw);
-    }
-
-    .fecha-lazo,
-    .dress-lazo,
-    .rsvp-lazo,
-    .fotos-lazo {
-        right: -7%;
-    }
-
-    .ubicacion-lazo,
-    .cuenta-lazo {
-        left: -7%;
-    }
-}
-
-
-/* =========================================================
-   MÓVILES
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-    .portada {
-        min-height: 100svh;
-        height: 100dvh;
-    }
-
-    .imagen-portada {
-        width: 100%;
-        height: 100%;
-
-        object-fit: cover;
-
-        object-position: center center;
-    }
-
-    .boton-abrir {
-        bottom:
-            max(28px, env(safe-area-inset-bottom));
-
-        min-width: 210px;
-
-        font-size: 10px;
-
-        padding:
-            13px 22px;
-    }
-
-
-    /* -----------------------------------------------------
-       SECCIONES
-       ----------------------------------------------------- */
-
-    .seccion {
-        min-height: auto;
-
-        padding:
-            72px 20px;
-
-        /*
-           CLAVE:
-           Los lazos pueden salir de la sección.
-        */
-        overflow: visible;
-    }
-
-
-    /* -----------------------------------------------------
-       BIENVENIDA
-       ----------------------------------------------------- */
-
-    .bienvenida {
-        min-height: 100svh;
-
-        padding:
-            90px 20px 56px;
-    }
-
-    .bienvenida-lazo {
-        top: 5%;
-
-        width:
-            min(270px, 70vw);
-
-        opacity: 1;
-    }
-
-    .bienvenida .seccion-etiqueta {
-        margin-bottom: 4px;
-    }
-
-    .titulo-bienvenida {
-        margin-top: 0;
-
-        font-size:
-            clamp(42px, 12vw, 62px);
-
-        line-height: 1;
-    }
-
-
-    /* -----------------------------------------------------
-       FECHA
-       ----------------------------------------------------- */
-
-    .fecha {
-        min-height: 100svh;
-
-        isolation: isolate;
-
-        overflow: visible;
-    }
-
-    .fecha-contenido {
-        position: relative;
-
-        z-index: 30;
-    }
-
-    .marco-fecha {
-        min-height: 325px;
-    }
-
-    .fecha-dia {
-        padding:
-            22px 28px;
-    }
-
-    .fecha-dia strong {
-        font-size: 88px;
-    }
-
-    .fecha-lazo {
-        bottom: -75px;
-        right: -8%;
-
-        width:
-            min(290px, 72vw);
-
-        z-index: 25 !important;
-
-        opacity: 1 !important;
-
-        visibility: visible;
-    }
-
-
-    /* -----------------------------------------------------
-       LAZOS ENTRE SECCIONES
-       ----------------------------------------------------- */
-
-    .fecha-lazo,
-    .cuenta-lazo,
-    .ubicacion-lazo,
-    .dress-lazo,
-    .deseos-lazo,
-    .fotos-lazo,
-    .rsvp-lazo {
-        width:
-            min(250px, 65vw);
-
-        z-index: 25 !important;
-
-        opacity: 1 !important;
-
-        visibility: visible;
-
-        pointer-events: none;
-    }
-
-
-    .fecha-lazo {
-        width:
-            min(290px, 72vw);
-
-        z-index: 25 !important;
-    }
-
-
-    /* -----------------------------------------------------
-       CONTADOR
-       ----------------------------------------------------- */
-
-    .contador {
-        gap: 5px;
-    }
-
-    .contador-item {
-        min-height: 82px;
-    }
-
-    .contador-item strong {
-        font-size:
-            clamp(20px, 7vw, 30px);
-    }
-}
-
-
-/* =========================================================
-   PANTALLAS MUY PEQUEÑAS
-   ========================================================= */
-
-@media (max-width: 380px) {
-
-    .boton-abrir {
-        min-width: 190px;
-
-        padding:
-            12px 18px;
-
-        font-size: 9px;
-    }
-
-    .titulo-bienvenida {
-        font-size: 40px;
-    }
-
-    .contador-item {
-        min-height: 76px;
-    }
-
-    .contador-item span {
-        font-size: 5px;
-    }
-
-    .fecha-dia strong {
-        font-size: 80px;
-    }
-
-    .fecha-lazo {
-        width: 270px;
-    }
-}
-
-
-/* =========================================================
-   PANTALLAS GRANDES
-   ========================================================= */
-
-@media (min-width: 1200px) {
-
-    .imagen-portada {
-        object-position: center center;
-    }
-
-    .boton-abrir {
-        bottom: 42px;
-    }
-
-    .bienvenida-contenido,
-    .fecha-contenido,
-    .ubicacion-contenido,
-    .dress-contenido,
-    .deseos-contenido,
-    .fotos-contenido,
-    .rsvp-contenido {
-        max-width: 650px;
-    }
-}
-
-
-/* =========================================================
-   REDUCIR MOVIMIENTO
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior: auto !important;
-    }
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-
-        animation-iteration-count: 1 !important;
-
-        transition-duration: .01ms !important;
-    }
+    transform: rotate(-18deg);
 }
 
 
@@ -2399,16 +1596,13 @@ button {
 
     background: #fff;
 
-    color: #8f5d68;
-
-    font-family: "Cinzel", serif;
+    color: #b17582;
 }
 
 .footer p {
-    margin:
-        0 0 6px;
+    margin-bottom: 7px;
 
-    font-size: 10px;
+    font-size: 9px;
 
     letter-spacing: 1.5px;
 
@@ -2418,50 +1612,112 @@ button {
 .footer strong {
     display: block;
 
-    margin-bottom: 7px;
+    margin-bottom: 8px;
 
-    color: #D1030F;
+    color: var(--rojo);
 
-    font-size: 15px;
+    font-family: "Joshico",cursive;
 
-    font-weight: 600;
+    font-size: 24px;
 
-    letter-spacing: 1px;
+    font-weight: normal;
 }
 
 .footer span {
     display: block;
 
-    font-size: 9px;
+    margin-top: 4px;
 
-    letter-spacing: 1px;
+    font-size: 8px;
+
+    letter-spacing: .6px;
 
     opacity: .7;
 }
 
-@media (max-width: 600px) {
 
-    .footer {
-        padding:
-            24px 16px 28px;
+/* =========================================================
+   ANIMACIONES
+   ========================================================= */
+
+@keyframes girar {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes numeroCambio {
+    0% {
+        transform: scale(1);
     }
 
-    .footer p {
-        font-size: 9px;
+    45% {
+        transform: scale(1.14);
     }
 
-    .footer strong {
-        font-size: 13px;
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes botonSuave {
+    0%,100% {
+        transform:
+            translateY(0)
+            scale(1);
     }
 
-    .footer span {
-        font-size: 8px;
+    50% {
+        transform:
+            translateY(-2px)
+            scale(1.025);
     }
 }
 
 
 /* =========================================================
-   CONTROL DE ANCHO EN MÓVILES
+   TABLET
+   ========================================================= */
+
+@media (min-width: 601px) and (max-width: 1100px) {
+
+    .seccion {
+        padding-left: 45px;
+        padding-right: 45px;
+    }
+
+    .colores-dress {
+        flex-direction: row;
+
+        width: min(500px,100%);
+    }
+
+    .color-opcion {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .grafico-lazo {
+        width: 230px;
+    }
+
+    .cuenta-lazo,
+    .ubicacion-lazo,
+    .regalos-lazo,
+    .rsvp-lazo {
+        right: 1%;
+    }
+
+    .cuenta-conector,
+    .dress-lazo,
+    .regalos-lazo {
+        left: 1%;
+    }
+}
+
+
+/* =========================================================
+   MÓVILES
    ========================================================= */
 
 @media (max-width: 600px) {
@@ -2485,177 +1741,471 @@ button {
     .seccion {
         width: 100%;
         max-width: 100%;
+
+        min-height: auto;
+
+        padding:
+            78px 20px;
     }
 
-    .bienvenida,
-    .fecha,
-    .cuenta,
-    .ubicacion,
-    .dresscode,
-    .deseos,
-    .fotos,
-    .rsvp {
+
+    /* -----------------------------------------------------
+       PORTADA
+    ----------------------------------------------------- */
+
+    .portada {
+        height: 100dvh;
+        min-height: 100svh;
+    }
+
+    .imagen-portada {
         width: 100%;
-        max-width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+        object-position: center;
     }
-}
+
+    .boton-abrir {
+        bottom:
+            max(28px,env(safe-area-inset-bottom));
+
+        min-width: 210px;
+
+        padding:
+            13px 22px;
+
+        font-size: 10px;
+    }
 
 
-/* =========================================================
-   CONTROL DE DESBORDAMIENTO
-   ========================================================= */
+    /* -----------------------------------------------------
+       BIENVENIDA
+    ----------------------------------------------------- */
 
-/*
-   IMPORTANTE:
-   NO usamos max-width:100% en los lazos,
-   porque queremos permitir que sobresalgan
-   de la sección y conecten con la siguiente.
-*/
+    .bienvenida {
+        min-height: 100svh;
 
-.grafico-fresa,
-.fondo-flotante,
-.fondo-suave,
-.fondo-imagen-seccion,
-.fondo-cuadritos,
-.fondo-cuenta,
-.monograma-fondo,
-.fondo-fotos,
-.fondo-rsvp,
-.deseos-fondo {
-    max-width: 100%;
-}
+        padding:
+            85px 20px 65px;
+    }
 
+    .titulo-bienvenida {
+        font-size:
+            clamp(42px,12vw,62px);
+    }
 
-/* =========================================================
-   CAPA FINAL DE LAZOS
-   ========================================================= */
+    .mensaje-bienvenida {
+        font-size: 10px;
+    }
 
-/*
-   Esta regla tiene prioridad sobre las reglas
-   anteriores y garantiza que los lazos:
+    .frase-especial {
+        font-size:
+            clamp(21px,6vw,27px);
 
-   ✓ sean visibles
-   ✓ sean sólidos
-   ✓ estén sobre el fondo
-   ✓ no tengan opacidad
-   ✓ puedan sobresalir entre secciones
-*/
-
-.fecha-lazo,
-.cuenta-lazo,
-.ubicacion-lazo,
-.dress-lazo,
-.deseos-lazo,
-.fotos-lazo,
-.rsvp-lazo {
-    opacity: 1 !important;
-
-    visibility: visible !important;
-
-    z-index: 100 !important;
-
-    pointer-events: none;
-
-    mix-blend-mode: normal !important;
-
-    background: transparent !important;
-}
-
-/* =========================================================
-   LAZOS — AJUSTE ESPECÍFICO PARA TELÉFONOS
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-    /* Todos los lazos */
-    .grafico-lazo {
-        width: min(210px, 52vw);
-        height: auto;
-        opacity: 1 !important;
-        z-index: 1000 !important;
+        margin-top: 22px;
     }
 
 
     /* -----------------------------------------------------
        FECHA
-       ----------------------------------------------------- */
+    ----------------------------------------------------- */
 
-    .fecha-lazo {
-        width: min(220px, 56vw);
-        right: -5%;
-        bottom: -65px;
-        transform: rotate(-3deg);
+    .fecha {
+        min-height: 100svh;
+
+        padding:
+            80px 16px 105px;
+    }
+
+    .marco-fecha {
+        width: min(350px,96vw);
+
+        min-height: 310px;
+    }
+
+    .fecha-dia {
+        padding:
+            20px 25px;
+    }
+
+    .fecha-dia strong {
+        font-size: 82px;
     }
 
 
     /* -----------------------------------------------------
        CUENTA
-       ----------------------------------------------------- */
+    ----------------------------------------------------- */
 
-    .cuenta-lazo {
-        width: min(215px, 54vw);
-        left: -7%;
-        top: -65px;
-        transform: rotate(3deg);
+    .cuenta {
+        min-height: 76svh;
+
+        padding:
+            92px 16px 100px;
+    }
+
+    .contador {
+        gap: 5px;
+
+        margin-top: 28px;
+    }
+
+    .contador-item {
+        min-height: 78px;
+
+        border-radius: 15px;
+    }
+
+    .contador-item strong {
+        font-size:
+            clamp(20px,7vw,29px);
+    }
+
+    .contador-item span {
+        font-size: 5px;
     }
 
 
     /* -----------------------------------------------------
        UBICACIÓN
-       ----------------------------------------------------- */
+    ----------------------------------------------------- */
 
-    .ubicacion-lazo {
-        width: min(220px, 56vw);
-        right: -7%;
-        bottom: -62px;
-        transform: rotate(-3deg);
+    .ubicacion {
+        padding:
+            100px 20px 110px;
     }
 
 
     /* -----------------------------------------------------
-       DRESS CODE
-       ----------------------------------------------------- */
+       DRESS
+    ----------------------------------------------------- */
 
-    .dress-lazo {
-        width: min(215px, 54vw);
-        left: -7%;
-        top: -62px;
-        transform: rotate(3deg);
+    .dresscode {
+        padding:
+            100px 20px 110px;
     }
 
 
     /* -----------------------------------------------------
-       DESEOS
-       ----------------------------------------------------- */
+       REGALOS
+    ----------------------------------------------------- */
 
-    .deseos-lazo {
-        width: min(220px, 56vw);
-        right: -6%;
-        top: -65px;
-        transform: rotate(-3deg);
+    .regalos {
+        padding:
+            105px 20px 110px;
     }
 
-
-    /* -----------------------------------------------------
-       FOTOS
-       ----------------------------------------------------- */
-
-    .fotos-lazo {
-        width: min(220px, 56vw);
-        left: -6%;
-        bottom: -62px;
-        transform: rotate(3deg);
+    .regalos h2 {
+        font-size:
+            clamp(36px,10vw,52px);
     }
 
 
     /* -----------------------------------------------------
        RSVP
+    ----------------------------------------------------- */
+
+    .rsvp {
+        padding:
+            105px 20px 80px;
+    }
+
+    .rsvp h2 {
+        font-size:
+            clamp(40px,11vw,58px);
+    }
+
+
+    /* -----------------------------------------------------
+       LAZOS MÓVILES
        ----------------------------------------------------- */
 
-    .rsvp-lazo {
-        width: min(220px, 56vw);
-        right: -7%;
-        top: -65px;
-        transform: rotate(-3deg);
+    /*
+       Ajuste principal:
+       Los lazos ahora son un poco más pequeños y
+       se desplazan más hacia las esquinas.
+
+       Esto deja más aire alrededor del contenido
+       y evita que parezcan amontonados.
+    */
+
+    .grafico-lazo {
+        width: 190px;
+
+        height: auto;
+
+        z-index: 1000 !important;
+
+        opacity: 1 !important;
+
+        visibility: visible !important;
+
+        object-fit: contain !important;
+
+        pointer-events: none;
     }
+
+
+    /* FECHA → CUENTA */
+
+    .cuenta-lazo {
+        right: -18px;
+        bottom: -67px;
+
+        width: 190px;
+
+        transform:
+            rotate(-5deg);
+    }
+
+
+    /* CUENTA → UBICACIÓN */
+
+    .cuenta-conector {
+        left: -18px;
+        top: -67px;
+
+        width: 185px;
+
+        transform:
+            rotate(5deg);
+    }
+
+
+    /* UBICACIÓN → DRESS */
+
+    .ubicacion-lazo {
+        right: -18px;
+        bottom: -67px;
+
+        width: 190px;
+
+        transform:
+            rotate(-5deg);
+    }
+
+
+    /* DRESS → REGALOS */
+
+    .dress-lazo {
+        left: -18px;
+        top: -67px;
+
+        width: 190px;
+
+        transform:
+            rotate(5deg);
+    }
+
+
+    /* REGALOS → RSVP */
+
+    .regalos-lazo {
+        left: -18px;
+        top: -67px;
+
+        width: 190px;
+
+        transform:
+            rotate(5deg);
+    }
+
+
+    /* RSVP */
+
+    .rsvp-lazo {
+        right: -18px;
+        top: -67px;
+
+        width: 195px;
+
+        transform:
+            rotate(-5deg);
+    }
+
+
+    /* -----------------------------------------------------
+       FRESAS
+    ----------------------------------------------------- */
+
+    .grafico-fresa {
+        width: 52px;
+    }
+
+    .ubicacion-fresa-1 {
+        left: 3%;
+        top: 15%;
+    }
+
+    .ubicacion-fresa-2 {
+        right: 3%;
+        bottom: 13%;
+    }
+
+    .dress-fresa {
+        right: 4%;
+        bottom: 10%;
+    }
+
+    .regalos-fresa {
+        left: 4%;
+        bottom: 10%;
+    }
+
+    .rsvp-fresa {
+        left: 4%;
+        bottom: 10%;
+    }
+
+
+    /* -----------------------------------------------------
+       FOOTER
+    ----------------------------------------------------- */
+
+    .footer {
+        padding:
+            25px 16px 30px;
+    }
+
+    .footer strong {
+        font-size: 21px;
+    }
+
+    .footer span {
+        font-size: 7px;
+    }
+}
+
+
+/* =========================================================
+   TELÉFONOS MUY PEQUEÑOS
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .boton-abrir {
+        min-width: 190px;
+
+        padding:
+            12px 18px;
+
+        font-size: 9px;
+    }
+
+    .contador-item {
+        min-height: 72px;
+    }
+
+    .fecha-dia strong {
+        font-size: 78px;
+    }
+
+
+    /* LAZOS MÁS COMPACTOS PARA PANTALLAS PEQUEÑAS */
+
+    .grafico-lazo {
+        width: 170px;
+    }
+
+    .cuenta-lazo {
+        right: -17px;
+        bottom: -63px;
+        width: 170px;
+    }
+
+    .cuenta-conector {
+        left: -17px;
+        top: -63px;
+        width: 165px;
+    }
+
+    .ubicacion-lazo {
+        right: -17px;
+        bottom: -63px;
+        width: 170px;
+    }
+
+    .dress-lazo {
+        left: -17px;
+        top: -63px;
+        width: 170px;
+    }
+
+    .regalos-lazo {
+        left: -17px;
+        top: -63px;
+        width: 170px;
+    }
+
+    .rsvp-lazo {
+        right: -17px;
+        top: -63px;
+        width: 175px;
+    }
+}
+
+
+/* =========================================================
+   PANTALLAS GRANDES
+   ========================================================= */
+
+@media (min-width: 1200px) {
+
+    .seccion {
+        padding-top: 90px;
+        padding-bottom: 90px;
+    }
+
+    .grafico-lazo {
+        width: 280px;
+    }
+
+    .cuenta-lazo,
+    .ubicacion-lazo,
+    .regalos-lazo,
+    .rsvp-lazo {
+        right: 3%;
+    }
+
+    .cuenta-conector,
+    .dress-lazo,
+    .regalos-lazo {
+        left: 3%;
+    }
+}
+
+
+/* =========================================================
+   REDUCIR MOVIMIENTO
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+
+/* =========================================================
+   LIMPIEZA VISUAL PNG
+   ========================================================= */
+
+.marco-imagen,
+.grafico-lazo,
+.grafico-fresa {
+    background: transparent !important;
+
+    mix-blend-mode: normal !important;
+
+    object-fit: contain !important;
 }

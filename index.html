@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#F6ADC1">
-    
+
     <title>Paola Marie | Baby Shower</title>
 
     <link rel="icon" type="image/png" href="images/lazo-fresas.PNG">
-
 
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -16,8 +15,12 @@
 
 <body>
 
-    <!-- PORTADA -->
+    <!-- =====================================================
+         PORTADA
+    ====================================================== -->
+
     <main id="portada" class="portada">
+
         <img
             src="images/portada-referencia.PNG"
             alt="Paola Marie - Baby Shower"
@@ -27,65 +30,141 @@
         <button id="abrirInvitacion" class="boton-abrir" type="button">
             <span>ABRIR INVITACIÓN</span>
         </button>
+
     </main>
 
-    <!-- INVITACIÓN -->
+
+    <!-- =====================================================
+         INVITACIÓN
+    ====================================================== -->
+
     <main id="invitacion" class="invitacion">
 
         <div id="transicionEntrada" class="transicion-entrada">
             <div class="destello"></div>
         </div>
 
+
+        <!-- MÚSICA -->
+
         <audio id="musica" preload="auto" loop>
             <source src="music/Mi persona favorita.mp3" type="audio/mpeg">
         </audio>
 
-        <!-- 1. BIENVENIDA -->
+
+        <!-- =================================================
+             1. BIENVENIDA
+        ================================================== -->
+
         <section id="bienvenida" class="seccion bienvenida">
+
             <div class="fondo-flotante fondo-bienvenida"></div>
 
             <div class="bienvenida-contenido">
-                <p class="etiqueta">UNA CELEBRACIÓN MUY ESPECIAL</p>
-                <br>
-                <h1 class="titulo-bienvenida">Bienvenidos</h1>
+
+                <p class="etiqueta">
+                    UNA CELEBRACIÓN MUY ESPECIAL
+                </p>
+
+                <h1 class="titulo-bienvenida">
+                    Bienvenidos
+                </h1>
 
                 <p class="mensaje-bienvenida">
                     Estamos felices de compartir contigo
                     este momento tan especial.
                 </p>
 
+                <div class="frase-especial">
+                    <span>“</span>
+                    Nueve meses esperando,
+                    toda una vida para amar.
+                    <span>”</span>
+                </div>
+
                 <div class="reproductor-integrado">
-                    <button id="botonMusica" class="boton-musica" type="button" aria-label="Reproducir música">
+
+                    <button
+                        id="botonMusica"
+                        class="boton-musica"
+                        type="button"
+                        aria-label="Reproducir música"
+                    >
                         <span class="disco">
                             <span class="centro-disco">▶</span>
                         </span>
                     </button>
 
-                    <p id="textoMusica" class="texto-musica">TOCA PARA ESCUCHAR</p>
+                    <p id="textoMusica" class="texto-musica">
+                        TOCA PARA ESCUCHAR
+                    </p>
+
                 </div>
+
             </div>
+
         </section>
 
-        <!-- 2. FECHA -->
+
+        <!-- =================================================
+             2. FECHA
+        ================================================== -->
+
         <section id="fecha" class="seccion fecha">
+
             <div class="fondo-suave fondo-fecha"></div>
 
-              <img class="grafico-lazo cuenta-lazo" src="images/lazo-fresas-3.PNG" alt="" aria-hidden="true">
+            <!-- Lazo que conecta FECHA → CUENTA -->
+            <img
+                class="grafico-lazo cuenta-lazo"
+                src="images/lazo-fresas-3.PNG"
+                alt=""
+                aria-hidden="true"
+            >
 
             <div class="fecha-contenido">
-                <p class="seccion-etiqueta">Reserva esta fecha</p>
+
+                <p class="seccion-etiqueta">
+                    Reserva esta fecha
+                </p>
 
                 <div class="marco-fecha">
-                    <img src="images/marco.PNG" alt="" aria-hidden="true" class="marco-imagen">
+
+                    <img
+                        src="images/marco.PNG"
+                        alt=""
+                        aria-hidden="true"
+                        class="marco-imagen"
+                    >
 
                     <div class="fecha-dia">
-                        <span class="dia-pequeno">DOMINGO</span>
-                        <strong>01</strong>
-                        <span class="mes">NOVIEMBRE</span>
-                        <span class="anio">2026</span>
-                        <span class="mes">HORA</span>
-                        <span>03 P.M.</span>
+
+                        <span class="dia-pequeno">
+                            DOMINGO
+                        </span>
+
+                        <strong>
+                            01
+                        </strong>
+
+                        <span class="mes">
+                            NOVIEMBRE
+                        </span>
+
+                        <span class="anio">
+                            2026
+                        </span>
+
+                        <span class="mes">
+                            HORA
+                        </span>
+
+                        <span>
+                            03 P.M.
+                        </span>
+
                     </div>
+
                 </div>
 
                 <p class="fecha-frase">
@@ -93,206 +172,434 @@
                     compartir y crear recuerdos.
                 </p>
 
-                <button class="boton-linea" id="calendarioBtn" type="button">
+                <button
+                    class="boton-linea"
+                    id="calendarioBtn"
+                    type="button"
+                >
                     AGREGAR AL CALENDARIO
                 </button>
+
             </div>
+
         </section>
 
-        <!-- 3. CUENTA REGRESIVA -->
+
+        <!-- =================================================
+             3. CUENTA REGRESIVA
+        ================================================== -->
+
         <section id="cuenta" class="seccion cuenta">
+
             <div class="fondo-cuenta"></div>
 
+            <!-- Lazo que conecta CUENTA → UBICACIÓN -->
+            <img
+                class="grafico-lazo cuenta-conector"
+                src="images/lazo-fresas-3.PNG"
+                alt=""
+                aria-hidden="true"
+            >
 
             <div class="cuenta-contenido">
-                <p class="seccion-etiqueta">FALTA MUY POQUITO</p>
-                <h2>La cuenta regresiva</h2>
+
+                <p class="seccion-etiqueta">
+                    FALTA MUY POQUITO
+                </p>
+
+                <h2>
+                    La cuenta regresiva
+                </h2>
 
                 <div class="contador">
-                    <button class="contador-item" type="button" data-unidad="DÍAS">
+
+                    <button
+                        class="contador-item"
+                        type="button"
+                        data-unidad="DÍAS"
+                    >
                         <strong id="dias">00</strong>
                         <span>DÍAS</span>
                     </button>
 
-                    <button class="contador-item" type="button" data-unidad="HORAS">
+                    <button
+                        class="contador-item"
+                        type="button"
+                        data-unidad="HORAS"
+                    >
                         <strong id="horas">00</strong>
                         <span>HORAS</span>
                     </button>
 
-                    <button class="contador-item" type="button" data-unidad="MINUTOS">
+                    <button
+                        class="contador-item"
+                        type="button"
+                        data-unidad="MINUTOS"
+                    >
                         <strong id="minutos">00</strong>
                         <span>MINUTOS</span>
                     </button>
 
-                    <button class="contador-item" type="button" data-unidad="SEGUNDOS">
+                    <button
+                        class="contador-item"
+                        type="button"
+                        data-unidad="SEGUNDOS"
+                    >
                         <strong id="segundos">00</strong>
                         <span>SEGUNDOS</span>
                     </button>
+
                 </div>
 
-                <p id="cuentaMensaje" class="micro-mensaje">Cada segundo nos acerca a Paola Marie.</p>
-            </div>
-        </section>
-
-        <!-- 4. UBICACIÓN -->
-        <section id="ubicacion" class="seccion ubicacion">
-            <div class="fondo-imagen-seccion fondo-ubicacion"></div>
-
-            <img class="grafico-fresa ubicacion-fresa-1" src="images/fresa.PNG" alt="" aria-hidden="true">
-            <img class="grafico-fresa ubicacion-fresa-2" src="images/fresa.PNG" alt="" aria-hidden="true">
-            <img class="grafico-lazo ubicacion-lazo" src="images/lazo-fresas.PNG" alt="" aria-hidden="true">
-
-            <div class="ubicacion-contenido">
-                <p class="seccion-etiqueta">NOS ENCONTRAMOS EN</p>
-                <h2>El lugar</h2>
-
-                <div class="ubicacion-dato">
-                    <strong>Lugar del evento</strong>
-                    <span>Dirección del evento</span>
-                </div>
-
-                <button class="boton-rojo" id="mapaBtn" type="button">
-                    VER UBICACIÓN
-                </button>
-            </div>
-        </section>
-
-        <!-- 5. DRESS CODE -->
-        <section id="dresscode" class="seccion dresscode">
-            <div class="fondo-cuadritos"></div>
-
-            <img class="grafico-lazo dress-lazo" src="images/lazo-fresas-2.PNG" alt="" aria-hidden="true">
-            <img class="grafico-fresa dress-fresa" src="images/fresa.PNG" alt="" aria-hidden="true">
-
-            <div class="dress-contenido">
-                <p class="seccion-etiqueta">PARA ESTA OCASIÓN</p>
-                <h2>Dress Code</h2>
-                <p class="dress-subtitulo">Elige tu tono favorito</p>
-
-                <div class="colores-dress">
-                    <button class="color-opcion blanco" data-color="BLANCO" type="button">
-                        <span></span> BLANCO
-                    </button>
-
-                    <button class="color-opcion rosa" data-color="ROSA" type="button">
-                        <span></span> ROSA
-                    </button>
-
-                    <button class="color-opcion rojo" data-color="ROJO" type="button">
-                        <span></span> ROJO
-                    </button>
-                </div>
-
-                <p id="dressMensaje" class="dress-mensaje">Toca un color</p>
-            </div>
-        </section>
-
-        <!-- 6. DESEOS PARA PAOLA -->
-        <section id="deseos" class="seccion deseos">
-            <div class="deseos-fondo"></div>
-            <img class="grafico-lazo deseos-lazo" src="images/lazo-fresas-3.PNG" alt="" aria-hidden="true">
-
-            <div class="deseos-contenido">
-                <p class="seccion-etiqueta">UN DETALLE ESPECIAL</p>
-                <h2>Un mensajito para Paola ♡</h2>
-                <p class="deseos-subtitulo">Un pequeño deseo, un recuerdo para siempre.</p>
-
-                <form id="deseosForm" class="deseos-form">
-                    <label for="deseoTexto">Escribe tu deseo</label>
-                    <textarea id="deseoTexto" maxlength="280" rows="4" placeholder="Que esta nueva etapa esté llena de amor..." required></textarea>
-                    <button class="boton-rojo" type="submit">ENVIAR MI DESEO ♡</button>
-                </form>
-
-                <p id="deseoMensaje" class="deseo-mensaje" aria-live="polite"></p>
-                <p class="deseos-nota">Tu mensaje quedará preparado para compartirlo. Para recibirlo directamente, conecta este formulario a WhatsApp o a un servicio de formularios.</p>
-            </div>
-        </section>
-
-        <!-- 7. FOTOS + QR -->
-        <section id="fotos" class="seccion fotos">
-            <div class="fondo-fotos"></div>
-
-            <img class="grafico-fresa fotos-fresa-1" src="images/fresa.PNG" alt="" aria-hidden="true">
-            <img class="grafico-fresa fotos-fresa-2" src="images/fresa.PNG" alt="" aria-hidden="true">
-            <img class="grafico-lazo fotos-lazo" src="images/lazo-fresas.PNG" alt="" aria-hidden="true">
-
-            <div class="fotos-contenido">
-                <p class="seccion-etiqueta">CAPTURA EL MOMENTO</p>
-                <h2>Comparte tus recuerdos</h2>
-
-                <p class="fotos-texto">
-                    Durante la celebración, toma tus fotos favoritas
-                    y compártelas con nosotros.
+                <p id="cuentaMensaje" class="micro-mensaje">
+                    Cada segundo nos acerca a Paola Marie.
                 </p>
 
-                <label for="subirFotos" class="boton-subir">
-                    <span>SUBIR FOTOS</span>
-                    <input id="subirFotos" type="file" accept="image/*" multiple>
-                </label>
-
-                <div class="qr-area">
-                    <div class="qr-marco">
-                        <div class="qr-placeholder">
-                            <span>QR</span>
-                        </div>
-                    </div>
-                    <p>ESCANEA PARA COMPARTIR</p>
-                </div>
-
-                <p id="fotosMensaje" class="fotos-mensaje"></p>
             </div>
+
         </section>
 
-        <!-- 8. RSVP -->
+
+        <!-- =================================================
+             4. UBICACIÓN
+        ================================================== -->
+
+        <section id="ubicacion" class="seccion ubicacion">
+
+            <div class="fondo-imagen-seccion fondo-ubicacion"></div>
+
+            <!-- Lazo que conecta UBICACIÓN → DRESS CODE -->
+            <img
+                class="grafico-lazo ubicacion-lazo"
+                src="images/lazo-fresas.PNG"
+                alt=""
+                aria-hidden="true"
+            >
+
+            <div class="ubicacion-contenido">
+
+                <p class="seccion-etiqueta">
+                    NOS ENCONTRAMOS EN
+                </p>
+
+                <h2>
+                    El lugar
+                </h2>
+
+                <div class="ubicacion-dato">
+
+                    <strong>
+                        Silver Club
+                    </strong>
+
+                    <span>
+                        Te esperamos para celebrar juntos.
+                    </span>
+
+                </div>
+
+                <a
+                    class="boton-rojo boton-enlace"
+                    href="https://maps.app.goo.gl/KDKvMhsrYHBvixNn8?g_st=ic"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    VER UBICACIÓN
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             5. DRESS CODE
+        ================================================== -->
+
+        <section id="dresscode" class="seccion dresscode">
+
+            <div class="fondo-cuadritos"></div>
+
+            <!-- Lazo que conecta DRESS CODE → REGALOS -->
+            <img
+                class="grafico-lazo dress-lazo"
+                src="images/lazo-fresas-2.PNG"
+                alt=""
+                aria-hidden="true"
+            >
+
+            <img
+                class="grafico-fresa dress-fresa"
+                src="images/fresa.PNG"
+                alt=""
+                aria-hidden="true"
+            >
+
+            <div class="dress-contenido">
+
+                <p class="seccion-etiqueta">
+                    PARA ESTA OCASIÓN
+                </p>
+
+                <h2>
+                    Dress Code
+                </h2>
+
+                <p class="dress-subtitulo">
+                    Elige tu tono favorito
+                </p>
+
+                <div class="colores-dress">
+
+                    <button
+                        class="color-opcion blanco"
+                        data-color="BLANCO"
+                        type="button"
+                    >
+                        <span></span>
+                        BLANCO
+                    </button>
+
+                    <button
+                        class="color-opcion rosa"
+                        data-color="ROSA"
+                        type="button"
+                    >
+                        <span></span>
+                        ROSA
+                    </button>
+
+                    <button
+                        class="color-opcion rojo"
+                        data-color="ROJO"
+                        type="button"
+                    >
+                        <span></span>
+                        ROJO
+                    </button>
+
+                </div>
+
+                <p id="dressMensaje" class="dress-mensaje">
+                    Toca un color
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             6. REGALOS
+        ================================================== -->
+
+        <section id="regalos" class="seccion regalos">
+
+            <div class="fondo-regalos"></div>
+
+            <!-- Lazo que conecta REGALOS → RSVP -->
+            <img
+                class="grafico-lazo regalos-lazo"
+                src="images/lazo-fresas.PNG"
+                alt=""
+                aria-hidden="true"
+            >
+
+            <img
+                class="grafico-fresa regalos-fresa"
+                src="images/fresa.PNG"
+                alt=""
+                aria-hidden="true"
+            >
+
+            <div class="regalos-contenido">
+
+                <p class="seccion-etiqueta">
+                    SI DESEAS TENER UN DETALLE
+                </p>
+
+                <h2>
+                    Regalitos para Paola ♡
+                </h2>
+
+                <p class="regalos-subtitulo">
+                    Tu cariño es el mejor regalo,
+                    pero si deseas obsequiarle algo:
+                </p>
+
+                <div class="regalos-lista">
+
+                    <div class="regalo-item">
+
+                        <span class="regalo-icono">
+                            ♡
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Pampers
+                            </strong>
+
+                            <p>
+                                Del número 2 en adelante
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="regalo-item">
+
+                        <span class="regalo-icono">
+                            ♡
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Wipes
+                            </strong>
+
+                            <p>
+                                Sin alcohol
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <p class="regalos-frase">
+                    Gracias por acompañarnos
+                    con tanto amor en esta etapa.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             7. RSVP
+        ================================================== -->
+
         <section id="rsvp" class="seccion rsvp">
+
             <div class="fondo-rsvp"></div>
 
-            <img class="grafico-lazo rsvp-lazo" src="images/lazo-fresas-3.PNG" alt="" aria-hidden="true">
-            <img class="grafico-fresa rsvp-fresa" src="images/fresa.PNG" alt="" aria-hidden="true">
+            <img
+                class="grafico-lazo rsvp-lazo"
+                src="images/lazo-fresas-3.PNG"
+                alt=""
+                aria-hidden="true"
+            >
+
+            <img
+                class="grafico-fresa rsvp-fresa"
+                src="images/fresa.PNG"
+                alt=""
+                aria-hidden="true"
+            >
 
             <div class="rsvp-contenido">
-                <p class="seccion-etiqueta">QUEREMOS CONTAR CONTIGO</p>
-                 <br>
-                <h2>¿Nos acompañas?</h2>
-   <br>
-    <br>
+
+                <p class="seccion-etiqueta">
+                    QUEREMOS CONTAR CONTIGO
+                </p>
+
+                <h2>
+                    ¿Nos acompañas?
+                </h2>
+
                 <p class="rsvp-texto">
                     Confirma tu asistencia
                     y celebra este día con nosotros.
                 </p>
 
-                <div class="rsvp-botones">
-                    <button class="rsvp-btn" data-respuesta="SÍ, ALLÍ ESTARÉ" type="button">
-                        SÍ, ALLÍ ESTARÉ
-                    </button>
-
-                    <button class="rsvp-btn secundario" data-respuesta="NO PODRÉ ASISTIR" type="button">
-                        NO PODRÉ ASISTIR
-                    </button>
+                <div class="rsvp-fecha-limite">
+                    CONFIRMAR ANTES DEL<br>
+                    <strong>JUEVES 15 DE OCTUBRE</strong>
                 </div>
 
-                <p id="rsvpMensaje" class="rsvp-mensaje"></p>
+                <div class="rsvp-botones">
+
+                    <a
+                        class="rsvp-btn"
+                        href="https://wa.me/58412046170?text=Hola%20Paola%20%F0%9F%92%95%20Confirmo%20mi%20asistencia%20al%20Baby%20Shower%20de%20Paola%20Marie.%20%C2%A1Estoy%20muy%20feliz%20de%20acompa%C3%B1arte!%20%F0%9F%8C%B8%F0%9F%8E%80"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        SÍ, ALLÍ ESTARÉ
+                    </a>
+
+                    <a
+                        class="rsvp-btn secundario"
+                        href="https://wa.me/58412046170?text=Hola%20Paola%20%F0%9F%92%95%20Muchas%20gracias%20por%20la%20invitaci%C3%B3n.%20Lamentablemente%20no%20podr%C3%A9%20asistir%20al%20Baby%20Shower%20de%20Paola%20Marie%2C%20pero%20te%20deseo%20lo%20mejor%20en%20este%20momento%20tan%20especial.%20%F0%9F%8C%B8%F0%9F%8E%80"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        NO PODRÉ ASISTIR
+                    </a>
+
+                </div>
 
                 <div class="cierre">
                     <span></span>
-                        <span></span>
+                    <span></span>
                 </div>
+
             </div>
+
         </section>
 
-         <footer class="footer">
-            <p>Invitación digital creada por</p>
-            <strong>FRANYELI A.R.T</strong>
-            <span>franye.adm@gmail.com VE +58 412-9000510</span>
-             <span>© 2026 · Todos los derechos reservados</span>
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="footer">
+
+            <p>
+                Una celebración hecha con amor
+            </p>
+
+            <strong>
+                Paola Marie ♡
+            </strong>
+
+            <span>
+                Invitación digital creada por FRANYELI A.R.T
+            </span>
+
+            <span>
+                franyeliart10@gmail.com · VE +58 412-9000510
+            </span>
+
+            <span>
+                © 2026 · Todos los derechos reservados
+            </span>
+
         </footer>
 
     </main>
 
-    <button id="controlMusicaFlotante" class="control-musica-flotante" type="button" aria-label="Controlar música">
+
+    <!-- CONTROL DE MÚSICA -->
+
+    <button
+        id="controlMusicaFlotante"
+        class="control-musica-flotante"
+        type="button"
+        aria-label="Controlar música"
+    >
         <span></span>
     </button>
 
+
     <script src="script.js"></script>
+
 </body>
 </html>
