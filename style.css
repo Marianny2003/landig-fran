@@ -122,9 +122,8 @@ button {
     background: #fdf0f0;
 }
 
-
 /* =========================================================
-   BOTÓN ABRIR INVITACIÓN
+   BOTÓN ABRIR INVITACIÓN — FLOTANTE + GLOW
    ========================================================= */
 
 .boton-abrir {
@@ -140,14 +139,16 @@ button {
 
     padding: 14px 25px;
 
-    border: 1px solid rgba(255,255,255,0.95);
+    border: 1px solid rgba(255, 255, 255, 0.95);
     border-radius: 999px;
 
     color: #fff;
     background: var(--rojo);
 
+    /* Sombra base */
     box-shadow:
-        0 10px 30px rgba(0,0,0,0.16);
+        0 8px 20px rgba(0, 0, 0, 0.16),
+        0 0 0 rgba(209, 3, 15, 0);
 
     font-family: "Cinzel", serif;
     font-size: 11px;
@@ -159,12 +160,18 @@ button {
 
     transform: translateX(-50%);
 
-    animation: respirarPortada 2.4s ease-in-out infinite;
+    /* ✨ Flotación + resplandor */
+    animation: flotarGlow 2.6s ease-in-out infinite;
 
     transition:
         transform 0.25s ease,
         box-shadow 0.25s ease;
 }
+
+
+/* =========================================================
+   ✨ BRILLO QUE RECORRE EL BOTÓN
+   ========================================================= */
 
 .boton-abrir::after {
     content: "";
@@ -178,24 +185,92 @@ button {
 
     transform: skewX(-22deg);
 
-    background: rgba(255,255,255,0.35);
+    background: rgba(255, 255, 255, 0.35);
 
     animation: brilloBoton 3.2s ease-in-out infinite;
 
     pointer-events: none;
 }
 
-.boton-abrir:hover {
-    transform: translateX(-50%) scale(1.04);
+
+/* =========================================================
+   ✨ ANIMACIÓN FLOTANTE + RESPLANDOR
+   ========================================================= */
+
+@keyframes flotarGlow {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+
+        box-shadow:
+            0 8px 20px rgba(0, 0, 0, 0.16),
+            0 0 0 rgba(209, 3, 15, 0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(-7px);
+
+        box-shadow:
+            0 14px 28px rgba(0, 0, 0, 0.18),
+            0 0 18px rgba(209, 3, 15, 0.45),
+            0 0 35px rgba(209, 3, 15, 0.20);
+    }
 }
+
+
+/* =========================================================
+   ✨ BRILLO QUE PASA POR EL BOTÓN
+   ========================================================= */
+
+@keyframes brilloBoton {
+
+    0% {
+        left: -80%;
+    }
+
+    45%,
+    100% {
+        left: 130%;
+    }
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.boton-abrir:hover {
+    transform: translateX(-50%) translateY(-2px) scale(1.04);
+
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.18),
+        0 0 20px rgba(209, 3, 15, 0.55),
+        0 0 40px rgba(209, 3, 15, 0.25);
+}
+
+
+/* =========================================================
+   CLICK
+   ========================================================= */
 
 .boton-abrir:active {
     transform: translateX(-50%) scale(0.94);
 }
 
+
+/* =========================================================
+   AL ABRIR LA INVITACIÓN
+   ========================================================= */
+
 .boton-abrir.abriendo {
     animation: none;
+
     transform: translateX(-50%) scale(0.94);
+
+    box-shadow:
+        0 0 25px rgba(209, 3, 15, 0.6),
+        0 0 45px rgba(209, 3, 15, 0.35);
 }
 
 
