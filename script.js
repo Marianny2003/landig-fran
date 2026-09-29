@@ -98,7 +98,7 @@ function pausarMusica() {
 
 /* ---------- CUENTA REGRESIVA ---------- */
 
-const fechaEvento = new Date("2026-11-15T16:00:00");
+const fechaEvento = new Date("2026-11-01T15:00:00");
 
 function actualizarCuenta() {
 
@@ -237,8 +237,8 @@ document
     .getElementById("calendarioBtn")
     .addEventListener("click", () => {
 
-        const inicio = "20261115T160000";
-        const fin = "20261115T200000";
+        const inicio = "20261101T130000";
+        const fin = "20261101T200000";
 
         const url =
             "https://calendar.google.com/calendar/render" +

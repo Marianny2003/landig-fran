@@ -383,7 +383,7 @@ button {
 
 .grafico-lazo {
     width: min(280px, 54vw);
-    height: auto;
+    height: 100%;
 
     opacity: .32;
 
