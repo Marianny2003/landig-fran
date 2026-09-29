@@ -124,7 +124,7 @@ button {
 
 
 /* =========================================================
-   BOTÓN ABRIR INVITACIÓN — FLOTANTE + GLOW
+   BOTÓN ABRIR INVITACIÓN
    ========================================================= */
 
 .boton-abrir {
@@ -168,11 +168,6 @@ button {
         box-shadow 0.25s ease;
 }
 
-
-/* =========================================================
-   BRILLO QUE RECORRE EL BOTÓN
-   ========================================================= */
-
 .boton-abrir::after {
     content: "";
 
@@ -193,11 +188,6 @@ button {
 
     pointer-events: none;
 }
-
-
-/* =========================================================
-   ANIMACIÓN FLOTANTE + RESPLANDOR
-   ========================================================= */
 
 @keyframes flotarGlow {
 
@@ -224,11 +214,6 @@ button {
     }
 }
 
-
-/* =========================================================
-   BRILLO DEL BOTÓN
-   ========================================================= */
-
 @keyframes brilloBoton {
 
     0% {
@@ -240,11 +225,6 @@ button {
         left: 130%;
     }
 }
-
-
-/* =========================================================
-   HOVER
-   ========================================================= */
 
 .boton-abrir:hover {
     transform:
@@ -258,21 +238,11 @@ button {
         0 0 40px rgba(209, 3, 15, 0.25);
 }
 
-
-/* =========================================================
-   CLICK
-   ========================================================= */
-
 .boton-abrir:active {
     transform:
         translateX(-50%)
         scale(0.94);
 }
-
-
-/* =========================================================
-   AL ABRIR
-   ========================================================= */
 
 .boton-abrir.abriendo {
     animation: none;
@@ -297,7 +267,7 @@ button {
     width: 100%;
     max-width: 100%;
 
-    overflow: hidden;
+    overflow: visible;
 
     opacity: 0;
     visibility: hidden;
@@ -310,7 +280,7 @@ button {
 
 
 /* =========================================================
-   TRANSICIÓN DE ENTRADA
+   TRANSICIÓN
    ========================================================= */
 
 .transicion-entrada {
@@ -371,7 +341,13 @@ button {
 
     padding: 64px 20px;
 
-    overflow: hidden;
+    /*
+       IMPORTANTE:
+       Permitimos que los lazos salgan
+       de una sección y entren visualmente
+       en la siguiente.
+    */
+    overflow: visible;
 }
 
 .seccion::after {
@@ -403,11 +379,19 @@ button {
     user-select: none;
 }
 
+
+/*
+   LOS LAZOS DECORATIVOS
+   -----------------------------------------
+   NO llevan opacidad.
+   Deben verse sólidos.
+*/
+
 .grafico-lazo {
     width: min(280px, 54vw);
-    height: 100%;
+    height: auto;
 
-    opacity: .32;
+    opacity: 1;
 
     filter:
         drop-shadow(
@@ -415,10 +399,9 @@ button {
         );
 
     transition:
-        transform 1s cubic-bezier(.2,.8,.2,1),
-        opacity 1s ease;
+        transform 1s cubic-bezier(.2,.8,.2,1);
 
-    z-index: 0;
+    z-index: 20;
 }
 
 .grafico-fresa {
@@ -435,7 +418,7 @@ button {
     transition:
         transform 1s cubic-bezier(.2,.8,.2,1);
 
-    z-index: 0;
+    z-index: 12;
 }
 
 .seccion.activa .grafico-lazo {
@@ -452,7 +435,7 @@ button {
 
 
 /* =========================================================
-   CONTENIDO DE LAS SECCIONES
+   CONTENIDO
    ========================================================= */
 
 .bienvenida-contenido,
@@ -548,13 +531,12 @@ button {
 
     top: 7%;
     left: 50%;
-    right: auto;
 
     width: min(300px, 68vw);
 
-    opacity: .32;
+    opacity: 1;
 
-    z-index: 1;
+    z-index: 20;
 
     transform:
         translateX(-50%)
@@ -735,7 +717,11 @@ button {
 
     background: #f9d9e4;
 
-    overflow: hidden;
+    /*
+       IMPORTANTE:
+       No recortar el lazo.
+    */
+    overflow: visible;
 }
 
 .fondo-fecha {
@@ -781,6 +767,8 @@ button {
 
     display: grid;
     place-items: center;
+
+    z-index: 5;
 }
 
 .marco-imagen {
@@ -795,7 +783,7 @@ button {
 
     background: transparent;
 
-    opacity: .9;
+    opacity: 1;
 
     filter:
         drop-shadow(
@@ -890,7 +878,7 @@ button {
 
 
 /* =========================================================
-   BOTONES GENERALES
+   BOTONES
    ========================================================= */
 
 .boton-linea,
@@ -982,12 +970,14 @@ button {
     background: var(--rojo);
 
     color: white;
+
+    overflow: visible;
 }
 
 .fondo-cuenta {
     inset: 0;
 
-    z-index: -3;
+    z-index: 0;
 
     background:
         radial-gradient(
@@ -1125,12 +1115,14 @@ button {
 
 .ubicacion {
     background: #fff7f9;
+
+    overflow: visible;
 }
 
 .fondo-ubicacion {
     inset: 0;
 
-    z-index: -3;
+    z-index: 0;
 
     background:
         linear-gradient(
@@ -1212,6 +1204,8 @@ button {
     background: transparent;
 
     isolation: isolate;
+
+    overflow: visible;
 }
 
 .dresscode .fondo-cuadritos {
@@ -1244,7 +1238,7 @@ button {
 .dresscode .dress-contenido {
     position: relative;
 
-    z-index: 5;
+    z-index: 30;
 }
 
 .dress-subtitulo {
@@ -1364,149 +1358,19 @@ button {
 
 
 /* =========================================================
-   MONOGRAMA
-   ========================================================= */
-
-.monograma {
-    min-height: 88svh;
-
-    background: #fffafc;
-}
-
-.monograma-fondo {
-    inset: 0;
-
-    z-index: -3;
-
-    background:
-        radial-gradient(
-            circle at 50% 46%,
-            rgba(246,173,193,.27),
-            transparent 34%
-        ),
-        linear-gradient(
-            135deg,
-            #fff8fa,
-            #fce8ee
-        );
-}
-
-.monograma-contenido {
-    width: min(460px, 100%);
-}
-
-.monograma-contenido > p:last-child {
-    width: min(300px, 90%);
-
-    margin:
-        9px auto 0;
-
-    font-size: 10px;
-
-    line-height: 1.8;
-
-    color: #76505f;
-}
-
-.monograma-circulo {
-    position: relative;
-
-    width: 170px;
-    height: 170px;
-
-    margin:
-        20px auto 19px;
-
-    border:
-        1px solid rgba(209,3,15,.38);
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,255,255,.6);
-
-    box-shadow:
-        0 22px 50px rgba(99,30,47,.11);
-
-    transition:
-        transform .8s cubic-bezier(.2,.8,.2,1);
-}
-
-.seccion.activa .monograma-circulo {
-    transform:
-        rotate(-4deg)
-        scale(1.02);
-}
-
-.letra-p,
-.letra-m {
-    position: absolute;
-
-    font-family: "Joshico", cursive;
-
-    color: var(--rojo);
-
-    font-size: 93px;
-
-    line-height: 1;
-}
-
-.letra-p {
-    top: 26px;
-    left: 40px;
-}
-
-.letra-m {
-    right: 25px;
-    bottom: 17px;
-
-    opacity: .7;
-}
-
-.monograma-brillo {
-    position: absolute;
-
-    top: 18%;
-    left: 14%;
-
-    width: 22px;
-    height: 22px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,255,255,.8);
-
-    filter: blur(2px);
-
-    animation:
-        brilloMonograma 2.5s ease-in-out infinite;
-}
-
-.monograma h2 {
-    color: var(--rojo);
-
-    font-family: "Joshico", cursive;
-
-    font-size:
-        clamp(52px, 15vw, 80px);
-
-    font-weight: normal;
-}
-
-
-/* =========================================================
    FOTOS
    ========================================================= */
 
 .fotos {
     background: #fff8fa;
+
+    overflow: visible;
 }
 
 .fondo-fotos {
     inset: 0;
 
-    z-index: -3;
+    z-index: 0;
 
     background:
         linear-gradient(
@@ -1668,12 +1532,14 @@ button {
 
 .deseos {
     background: #fff7fa;
+
+    overflow: visible;
 }
 
 .deseos-fondo {
     inset: 0;
 
-    z-index: -3;
+    z-index: 0;
 
     background:
         url("images/fondo-rosado.PNG")
@@ -1814,12 +1680,14 @@ button {
     color: white;
 
     isolation: isolate;
+
+    overflow: visible;
 }
 
 .fondo-rsvp {
     inset: 0;
 
-    z-index: -3;
+    z-index: 0;
 
     background:
         radial-gradient(
@@ -1833,7 +1701,7 @@ button {
             #b3020d
         );
 
-    opacity: .25;
+    opacity: 1;
 }
 
 .rsvp-contenido {
@@ -1940,80 +1808,16 @@ button {
 
 
 /* =========================================================
-   CONTROL DE MÚSICA FLOTANTE
+   LAZOS QUE CONECTAN LAS SECCIONES
    ========================================================= */
 
-.control-musica-flotante {
-    position: fixed;
-
-    right: 14px;
-    bottom: 16px;
-
-    z-index: 800;
-
-    width: 43px;
-    height: 43px;
-
-    display: grid;
-    place-items: center;
-
-    border:
-        1px solid rgba(209,3,15,.22);
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,255,255,.88);
-
-    box-shadow:
-        0 9px 25px rgba(60,20,30,.16);
-
-    opacity: 0;
-
-    transform: scale(.7);
-
-    pointer-events: none;
-
-    cursor: pointer;
-
-    transition:
-        opacity .3s ease,
-        transform .3s ease;
-}
-
-.control-musica-flotante.visible {
-    opacity: 1;
-
-    transform: scale(1);
-
-    pointer-events: auto;
-}
-
-.control-musica-flotante span {
-    width: 25px;
-    height: 25px;
-
-    display: block;
-
-    border-radius: 50%;
-
-    background:
-        repeating-radial-gradient(
-            circle,
-            #f8c3d1 0 2px,
-            #f2a7bc 3px 4px
-        );
-}
-
-.control-musica-flotante.sonando span {
-    animation:
-        girar 2.4s linear infinite;
-}
-
-
-/* =========================================================
-   DECORACIONES QUE CONECTAN SECCIONES
-   ========================================================= */
+/*
+   TODOS LOS LAZOS:
+   - sólidos
+   - sin opacidad
+   - encima del fondo
+   - pueden salir de la sección
+*/
 
 .fecha-lazo,
 .cuenta-lazo,
@@ -2024,19 +1828,46 @@ button {
 .rsvp-lazo {
     position: absolute;
 
-    z-index: 10;
+    z-index: 25;
 
-    opacity: 1;
+    opacity: 1 !important;
+
+    visibility: visible;
+
+    display: block;
 
     pointer-events: none;
+
+    user-select: none;
+
+    background: transparent !important;
+
+    mix-blend-mode: normal !important;
+
+    filter:
+        drop-shadow(
+            0 13px 20px rgba(112,30,53,0.12)
+        );
 }
+
+
+/* ---------------------------------------------------------
+   FECHA → CUENTA
+   --------------------------------------------------------- */
 
 .fecha-lazo {
     bottom: -95px;
     right: -9%;
 
     width: min(330px, 65vw);
+
+    z-index: 25;
 }
+
+
+/* ---------------------------------------------------------
+   CUENTA → UBICACIÓN
+   --------------------------------------------------------- */
 
 .cuenta-lazo {
     top: -95px;
@@ -2044,7 +1875,14 @@ button {
     left: -9%;
 
     width: min(315px, 63vw);
+
+    z-index: 25;
 }
+
+
+/* ---------------------------------------------------------
+   UBICACIÓN → DRESS CODE
+   --------------------------------------------------------- */
 
 .ubicacion-lazo {
     bottom: -90px;
@@ -2052,14 +1890,28 @@ button {
     left: -12%;
 
     width: min(320px, 63vw);
+
+    z-index: 25;
 }
+
+
+/* ---------------------------------------------------------
+   DRESS CODE → DESEOS
+   --------------------------------------------------------- */
 
 .dress-lazo {
     top: -90px;
     right: -12%;
 
     width: min(330px, 65vw);
+
+    z-index: 25;
 }
+
+
+/* ---------------------------------------------------------
+   DESEOS → FOTOS
+   --------------------------------------------------------- */
 
 .deseos-lazo {
     top: -95px;
@@ -2067,7 +1919,14 @@ button {
     right: -12%;
 
     width: min(360px, 78vw);
+
+    z-index: 25;
 }
+
+
+/* ---------------------------------------------------------
+   FOTOS → RSVP
+   --------------------------------------------------------- */
 
 .fotos-lazo {
     bottom: -90px;
@@ -2075,7 +1934,14 @@ button {
     left: -12%;
 
     width: min(340px, 67vw);
+
+    z-index: 25;
 }
+
+
+/* ---------------------------------------------------------
+   RSVP
+   --------------------------------------------------------- */
 
 .rsvp-lazo {
     top: -90px;
@@ -2083,7 +1949,14 @@ button {
     right: -12%;
 
     width: min(350px, 68vw);
+
+    z-index: 25;
 }
+
+
+/* =========================================================
+   FRESAS DECORATIVAS
+   ========================================================= */
 
 .fecha-fresa,
 .cuenta-fresa,
@@ -2093,12 +1966,12 @@ button {
 .fotos-fresa-1,
 .fotos-fresa-2,
 .rsvp-fresa {
-    z-index: 11;
+    z-index: 22;
 }
 
 
 /* =========================================================
-   ELEMENTOS DECORATIVOS TRANSPARENTES
+   ELEMENTOS DECORATIVOS
    ========================================================= */
 
 .marco-imagen,
@@ -2115,20 +1988,6 @@ button {
 /* =========================================================
    ANIMACIONES
    ========================================================= */
-
-@keyframes respirarPortada {
-
-    0%,
-    100% {
-        box-shadow:
-            0 10px 25px rgba(209,3,15,.18);
-    }
-
-    50% {
-        box-shadow:
-            0 14px 38px rgba(209,3,15,.42);
-    }
-}
 
 @keyframes destelloEntrada {
 
@@ -2149,7 +2008,6 @@ button {
 }
 
 @keyframes girar {
-
     to {
         transform: rotate(360deg);
     }
@@ -2266,10 +2124,6 @@ button {
 
 @media (max-width: 600px) {
 
-    /* -----------------------------------------------------
-       PORTADA
-       ----------------------------------------------------- */
-
     .portada {
         min-height: 100svh;
         height: 100dvh;
@@ -2306,6 +2160,12 @@ button {
 
         padding:
             72px 20px;
+
+        /*
+           CLAVE:
+           Los lazos pueden salir de la sección.
+        */
+        overflow: visible;
     }
 
 
@@ -2325,13 +2185,9 @@ button {
 
         width:
             min(270px, 70vw);
-    }
 
-    /*
-       Antes tenía 125px.
-       Se reduce para acercar
-       "UNA CELEBRACIÓN..." a "PAOLA MARIE".
-    */
+        opacity: 1;
+    }
 
     .bienvenida .seccion-etiqueta {
         margin-bottom: 4px;
@@ -2342,6 +2198,8 @@ button {
 
         font-size:
             clamp(42px, 12vw, 62px);
+
+        line-height: 1;
     }
 
 
@@ -2354,7 +2212,7 @@ button {
 
         isolation: isolate;
 
-        overflow: hidden;
+        overflow: visible;
     }
 
     .fecha-contenido {
@@ -2376,12 +2234,6 @@ button {
         font-size: 88px;
     }
 
-    /*
-       Lazo de Fecha:
-       encima del fondo,
-       debajo del contenido.
-    */
-
     .fecha-lazo {
         bottom: -75px;
         right: -8%;
@@ -2389,23 +2241,17 @@ button {
         width:
             min(290px, 72vw);
 
-        z-index: 10;
+        z-index: 25 !important;
 
-        pointer-events: none;
+        opacity: 1 !important;
+
+        visibility: visible;
     }
 
 
     /* -----------------------------------------------------
-       ELEMENTOS DECORATIVOS GENERALES
+       LAZOS ENTRE SECCIONES
        ----------------------------------------------------- */
-
-    .grafico-lazo {
-        opacity: .24;
-    }
-
-    .grafico-fresa {
-        opacity: .16;
-    }
 
     .fecha-lazo,
     .cuenta-lazo,
@@ -2417,18 +2263,21 @@ button {
         width:
             min(250px, 65vw);
 
+        z-index: 25 !important;
+
+        opacity: 1 !important;
+
+        visibility: visible;
+
         pointer-events: none;
     }
 
-    /*
-       Mantener el lazo de fecha ligeramente más grande.
-    */
 
     .fecha-lazo {
         width:
             min(290px, 72vw);
 
-        z-index: 10;
+        z-index: 25 !important;
     }
 
 
@@ -2630,6 +2479,7 @@ button {
         max-width: 100%;
 
         overflow-x: clip;
+        overflow-y: visible;
     }
 
     .seccion {
@@ -2655,7 +2505,13 @@ button {
    CONTROL DE DESBORDAMIENTO
    ========================================================= */
 
-.grafico-lazo,
+/*
+   IMPORTANTE:
+   NO usamos max-width:100% en los lazos,
+   porque queremos permitir que sobresalgan
+   de la sección y conecten con la siguiente.
+*/
+
 .grafico-fresa,
 .fondo-flotante,
 .fondo-suave,
@@ -2667,4 +2523,40 @@ button {
 .fondo-rsvp,
 .deseos-fondo {
     max-width: 100%;
+}
+
+
+/* =========================================================
+   CAPA FINAL DE LAZOS
+   ========================================================= */
+
+/*
+   Esta regla tiene prioridad sobre las reglas
+   anteriores y garantiza que los lazos:
+
+   ✓ sean visibles
+   ✓ sean sólidos
+   ✓ estén sobre el fondo
+   ✓ no tengan opacidad
+   ✓ puedan sobresalir entre secciones
+*/
+
+.fecha-lazo,
+.cuenta-lazo,
+.ubicacion-lazo,
+.dress-lazo,
+.deseos-lazo,
+.fotos-lazo,
+.rsvp-lazo {
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    z-index: 100 !important;
+
+    pointer-events: none;
+
+    mix-blend-mode: normal !important;
+
+    background: transparent !important;
 }
