@@ -389,7 +389,7 @@ button {
 
 .grafico-lazo {
     width: min(280px, 54vw);
-    height: auto;
+    height: 100%;
 
     opacity: 1;
 
@@ -401,7 +401,7 @@ button {
     transition:
         transform 1s cubic-bezier(.2,.8,.2,1);
 
-    z-index: 20;
+    z-index: 10;
 }
 
 .grafico-fresa {
