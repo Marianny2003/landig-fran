@@ -2560,3 +2560,102 @@ button {
 
     background: transparent !important;
 }
+
+/* =========================================================
+   LAZOS — AJUSTE ESPECÍFICO PARA TELÉFONOS
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    /* Todos los lazos */
+    .grafico-lazo {
+        width: min(210px, 52vw);
+        height: auto;
+        opacity: 1 !important;
+        z-index: 1000 !important;
+    }
+
+
+    /* -----------------------------------------------------
+       FECHA
+       ----------------------------------------------------- */
+
+    .fecha-lazo {
+        width: min(220px, 56vw);
+        right: -5%;
+        bottom: -65px;
+        transform: rotate(-3deg);
+    }
+
+
+    /* -----------------------------------------------------
+       CUENTA
+       ----------------------------------------------------- */
+
+    .cuenta-lazo {
+        width: min(215px, 54vw);
+        left: -7%;
+        top: -65px;
+        transform: rotate(3deg);
+    }
+
+
+    /* -----------------------------------------------------
+       UBICACIÓN
+       ----------------------------------------------------- */
+
+    .ubicacion-lazo {
+        width: min(220px, 56vw);
+        right: -7%;
+        bottom: -62px;
+        transform: rotate(-3deg);
+    }
+
+
+    /* -----------------------------------------------------
+       DRESS CODE
+       ----------------------------------------------------- */
+
+    .dress-lazo {
+        width: min(215px, 54vw);
+        left: -7%;
+        top: -62px;
+        transform: rotate(3deg);
+    }
+
+
+    /* -----------------------------------------------------
+       DESEOS
+       ----------------------------------------------------- */
+
+    .deseos-lazo {
+        width: min(220px, 56vw);
+        right: -6%;
+        top: -65px;
+        transform: rotate(-3deg);
+    }
+
+
+    /* -----------------------------------------------------
+       FOTOS
+       ----------------------------------------------------- */
+
+    .fotos-lazo {
+        width: min(220px, 56vw);
+        left: -6%;
+        bottom: -62px;
+        transform: rotate(3deg);
+    }
+
+
+    /* -----------------------------------------------------
+       RSVP
+       ----------------------------------------------------- */
+
+    .rsvp-lazo {
+        width: min(220px, 56vw);
+        right: -7%;
+        top: -65px;
+        transform: rotate(-3deg);
+    }
+}
