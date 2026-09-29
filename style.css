@@ -21,6 +21,7 @@
     --sombra: 0 18px 45px rgba(91, 28, 46, 0.13);
 }
 
+
 /* =========================================================
    RESET
    ========================================================= */
@@ -44,10 +45,14 @@ body {
     width: 100%;
     max-width: 100%;
     margin: 0;
+
     background: #FFFFFF;
     color: var(--texto);
+
     font-family: "Cinzel", serif;
+
     overflow-x: hidden;
+
     position: relative;
 }
 
@@ -82,7 +87,6 @@ button {
 
     overflow: hidden;
 
-    /* mismo fondo que la imagen */
     background: #fdf0f0;
 
     transition:
@@ -95,6 +99,7 @@ button {
     transform: scale(1.035);
     pointer-events: none;
 }
+
 
 /* =========================================================
    IMAGEN DE PORTADA
@@ -110,17 +115,13 @@ button {
 
     display: block;
 
-    /*
-       IMPORTANTE:
-       contain evita que la imagen se agrande y se recorte.
-       Mantiene completa la composición original.
-    */
     object-fit: contain;
 
     object-position: center center;
 
     background: #fdf0f0;
 }
+
 
 /* =========================================================
    BOTÓN ABRIR INVITACIÓN — FLOTANTE + GLOW
@@ -145,7 +146,6 @@ button {
     color: #fff;
     background: var(--rojo);
 
-    /* Sombra base */
     box-shadow:
         0 8px 20px rgba(0, 0, 0, 0.16),
         0 0 0 rgba(209, 3, 15, 0);
@@ -160,8 +160,8 @@ button {
 
     transform: translateX(-50%);
 
-    /* ✨ Flotación + resplandor */
-    animation: flotarGlow 2.6s ease-in-out infinite;
+    animation:
+        flotarGlow 2.6s ease-in-out infinite;
 
     transition:
         transform 0.25s ease,
@@ -170,13 +170,14 @@ button {
 
 
 /* =========================================================
-   ✨ BRILLO QUE RECORRE EL BOTÓN
+   BRILLO QUE RECORRE EL BOTÓN
    ========================================================= */
 
 .boton-abrir::after {
     content: "";
 
     position: absolute;
+
     top: 0;
     left: -80%;
 
@@ -187,21 +188,24 @@ button {
 
     background: rgba(255, 255, 255, 0.35);
 
-    animation: brilloBoton 3.2s ease-in-out infinite;
+    animation:
+        brilloBoton 3.2s ease-in-out infinite;
 
     pointer-events: none;
 }
 
 
 /* =========================================================
-   ✨ ANIMACIÓN FLOTANTE + RESPLANDOR
+   ANIMACIÓN FLOTANTE + RESPLANDOR
    ========================================================= */
 
 @keyframes flotarGlow {
 
     0%,
     100% {
-        transform: translateX(-50%) translateY(0);
+        transform:
+            translateX(-50%)
+            translateY(0);
 
         box-shadow:
             0 8px 20px rgba(0, 0, 0, 0.16),
@@ -209,7 +213,9 @@ button {
     }
 
     50% {
-        transform: translateX(-50%) translateY(-7px);
+        transform:
+            translateX(-50%)
+            translateY(-7px);
 
         box-shadow:
             0 14px 28px rgba(0, 0, 0, 0.18),
@@ -220,7 +226,7 @@ button {
 
 
 /* =========================================================
-   ✨ BRILLO QUE PASA POR EL BOTÓN
+   BRILLO DEL BOTÓN
    ========================================================= */
 
 @keyframes brilloBoton {
@@ -241,7 +247,10 @@ button {
    ========================================================= */
 
 .boton-abrir:hover {
-    transform: translateX(-50%) translateY(-2px) scale(1.04);
+    transform:
+        translateX(-50%)
+        translateY(-2px)
+        scale(1.04);
 
     box-shadow:
         0 12px 28px rgba(0, 0, 0, 0.18),
@@ -255,18 +264,22 @@ button {
    ========================================================= */
 
 .boton-abrir:active {
-    transform: translateX(-50%) scale(0.94);
+    transform:
+        translateX(-50%)
+        scale(0.94);
 }
 
 
 /* =========================================================
-   AL ABRIR LA INVITACIÓN
+   AL ABRIR
    ========================================================= */
 
 .boton-abrir.abriendo {
     animation: none;
 
-    transform: translateX(-50%) scale(0.94);
+    transform:
+        translateX(-50%)
+        scale(0.94);
 
     box-shadow:
         0 0 25px rgba(209, 3, 15, 0.6),
@@ -294,6 +307,7 @@ button {
     opacity: 1;
     visibility: visible;
 }
+
 
 /* =========================================================
    TRANSICIÓN DE ENTRADA
@@ -333,22 +347,30 @@ button {
 
 .transicion-entrada.salir {
     opacity: 0;
-    transition: opacity 0.35s ease;
+
+    transition:
+        opacity 0.35s ease;
 }
 
 
 /* =========================================================
    SECCIONES GENERALES
    ========================================================= */
+
 .seccion {
     position: relative;
+
     width: 100%;
     max-width: 100%;
+
     min-height: 100svh;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     padding: 64px 20px;
+
     overflow: hidden;
 }
 
@@ -417,11 +439,15 @@ button {
 }
 
 .seccion.activa .grafico-lazo {
-    transform: translate3d(0,0,0) rotate(0deg);
+    transform:
+        translate3d(0,0,0)
+        rotate(0deg);
 }
 
 .seccion.activa .grafico-fresa {
-    transform: translateY(0) rotate(0deg);
+    transform:
+        translateY(0)
+        rotate(0deg);
 }
 
 
@@ -438,6 +464,7 @@ button {
 .fotos-contenido,
 .rsvp-contenido {
     position: relative;
+
     z-index: 30;
 
     text-align: center;
@@ -460,6 +487,7 @@ button {
 .seccion.activa .fotos-contenido,
 .seccion.activa .rsvp-contenido {
     opacity: 1;
+
     transform: translateY(0);
 }
 
@@ -473,6 +501,7 @@ button {
     font-family: "Cinzel", serif;
 
     font-size: 8px;
+
     letter-spacing: .22em;
 
     font-weight: 600;
@@ -496,11 +525,9 @@ button {
         url("images/fondo-rosado.PNG");
 
     background-repeat: no-repeat;
+
     background-position: center center;
 
-    /*
-       El fondo ocupa toda la sección.
-    */
     background-size: cover;
 
     padding: 78px 24px;
@@ -512,6 +539,7 @@ button {
 
 .bienvenida-contenido {
     width: min(520px, 100%);
+
     margin-inline: auto;
 }
 
@@ -627,7 +655,9 @@ button {
 }
 
 .boton-musica:hover {
-    transform: translateY(-3px) scale(1.03);
+    transform:
+        translateY(-3px)
+        scale(1.03);
 
     box-shadow:
         0 14px 30px rgba(209,3,15,.22);
@@ -677,6 +707,7 @@ button {
     color: white;
 
     font-family: Arial, sans-serif;
+
     font-size: 7px;
 }
 
@@ -686,6 +717,7 @@ button {
     font-family: "Cinzel", serif;
 
     font-size: 7px;
+
     letter-spacing: .16em;
 }
 
@@ -695,12 +727,15 @@ button {
    ========================================================= */
 
 .fecha {
+    position: relative;
+
     min-height: 100svh;
 
-    background:
-        #f9d9e4;
+    isolation: isolate;
 
-    background-image: none;
+    background: #f9d9e4;
+
+    overflow: hidden;
 }
 
 .fondo-fecha {
@@ -708,7 +743,12 @@ button {
 }
 
 .fecha-contenido {
+    position: relative;
+
+    z-index: 30;
+
     width: min(520px, 100%);
+
     margin-inline: auto;
 }
 
@@ -745,6 +785,7 @@ button {
 
 .marco-imagen {
     position: absolute;
+
     inset: 0;
 
     width: 100%;
@@ -767,6 +808,8 @@ button {
 
     transition:
         transform .8s ease;
+
+    z-index: 5;
 }
 
 .seccion.activa .marco-imagen {
@@ -776,7 +819,7 @@ button {
 .fecha-dia {
     position: relative;
 
-    z-index: 4;
+    z-index: 6;
 
     display: flex;
     flex-direction: column;
@@ -791,7 +834,9 @@ button {
 
 .dia-pequeno {
     font-size: 11px;
+
     letter-spacing: .24em;
+
     font-weight: 600;
 
     white-space: nowrap;
@@ -1198,6 +1243,7 @@ button {
 
 .dresscode .dress-contenido {
     position: relative;
+
     z-index: 5;
 }
 
@@ -1282,6 +1328,7 @@ button {
 
 .color-opcion.blanco span {
     background: white;
+
     border-color: #ead6dd;
 }
 
@@ -1758,11 +1805,15 @@ button {
    ========================================================= */
 
 .rsvp {
+    position: relative;
+
     min-height: 100svh;
 
     background: var(--rojo);
 
     color: white;
+
+    isolation: isolate;
 }
 
 .fondo-rsvp {
@@ -2042,7 +2093,7 @@ button {
 .fotos-fresa-1,
 .fotos-fresa-2,
 .rsvp-fresa {
-    z-index: 20;
+    z-index: 11;
 }
 
 
@@ -2066,7 +2117,9 @@ button {
    ========================================================= */
 
 @keyframes respirarPortada {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow:
             0 10px 25px rgba(209,3,15,.18);
     }
@@ -2077,17 +2130,8 @@ button {
     }
 }
 
-@keyframes brilloBoton {
-    0%, 55% {
-        left: -80%;
-    }
-
-    80%, 100% {
-        left: 135%;
-    }
-}
-
 @keyframes destelloEntrada {
+
     0% {
         transform: scale(.2);
         opacity: 0;
@@ -2105,12 +2149,14 @@ button {
 }
 
 @keyframes girar {
+
     to {
         transform: rotate(360deg);
     }
 }
 
 @keyframes numeroCambio {
+
     0% {
         transform: scale(1);
     }
@@ -2125,7 +2171,9 @@ button {
 }
 
 @keyframes brilloMonograma {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translate(0,0);
         opacity: .35;
     }
@@ -2137,7 +2185,9 @@ button {
 }
 
 @keyframes lazoFlotante {
-    0%,100% {
+
+    0%,
+    100% {
         transform:
             translateX(-50%)
             translateY(0)
@@ -2153,7 +2203,9 @@ button {
 }
 
 @keyframes botonSuave {
-    0%, 100% {
+
+    0%,
+    100% {
         transform:
             translateY(0)
             scale(1);
@@ -2214,12 +2266,9 @@ button {
 
 @media (max-width: 600px) {
 
-    /*
-       PORTADA EN CELULAR
-
-       Mantiene cover para que no aparezca
-       ningún espacio rosado alrededor.
-    */
+    /* -----------------------------------------------------
+       PORTADA
+       ----------------------------------------------------- */
 
     .portada {
         min-height: 100svh;
@@ -2231,6 +2280,7 @@ button {
         height: 100%;
 
         object-fit: cover;
+
         object-position: center center;
     }
 
@@ -2246,12 +2296,22 @@ button {
             13px 22px;
     }
 
+
+    /* -----------------------------------------------------
+       SECCIONES
+       ----------------------------------------------------- */
+
     .seccion {
         min-height: auto;
 
         padding:
             72px 20px;
     }
+
+
+    /* -----------------------------------------------------
+       BIENVENIDA
+       ----------------------------------------------------- */
 
     .bienvenida {
         min-height: 100svh;
@@ -2267,19 +2327,44 @@ button {
             min(270px, 70vw);
     }
 
+    /*
+       Antes tenía 125px.
+       Se reduce para acercar
+       "UNA CELEBRACIÓN..." a "PAOLA MARIE".
+    */
+
+    .bienvenida .seccion-etiqueta {
+        margin-bottom: 4px;
+    }
+
     .titulo-bienvenida {
-        margin-top: 15px;
+        margin-top: 0;
 
         font-size:
             clamp(42px, 12vw, 62px);
     }
 
-    .marco-fecha {
-        min-height: 325px;
-    }
+
+    /* -----------------------------------------------------
+       FECHA
+       ----------------------------------------------------- */
 
     .fecha {
         min-height: 100svh;
+
+        isolation: isolate;
+
+        overflow: hidden;
+    }
+
+    .fecha-contenido {
+        position: relative;
+
+        z-index: 30;
+    }
+
+    .marco-fecha {
+        min-height: 325px;
     }
 
     .fecha-dia {
@@ -2290,6 +2375,29 @@ button {
     .fecha-dia strong {
         font-size: 88px;
     }
+
+    /*
+       Lazo de Fecha:
+       encima del fondo,
+       debajo del contenido.
+    */
+
+    .fecha-lazo {
+        bottom: -75px;
+        right: -8%;
+
+        width:
+            min(290px, 72vw);
+
+        z-index: 10;
+
+        pointer-events: none;
+    }
+
+
+    /* -----------------------------------------------------
+       ELEMENTOS DECORATIVOS GENERALES
+       ----------------------------------------------------- */
 
     .grafico-lazo {
         opacity: .24;
@@ -2308,7 +2416,25 @@ button {
     .rsvp-lazo {
         width:
             min(250px, 65vw);
+
+        pointer-events: none;
     }
+
+    /*
+       Mantener el lazo de fecha ligeramente más grande.
+    */
+
+    .fecha-lazo {
+        width:
+            min(290px, 72vw);
+
+        z-index: 10;
+    }
+
+
+    /* -----------------------------------------------------
+       CONTADOR
+       ----------------------------------------------------- */
 
     .contador {
         gap: 5px;
@@ -2355,6 +2481,10 @@ button {
     .fecha-dia strong {
         font-size: 80px;
     }
+
+    .fecha-lazo {
+        width: 270px;
+    }
 }
 
 
@@ -2398,10 +2528,13 @@ button {
     *::before,
     *::after {
         animation-duration: .01ms !important;
+
         animation-iteration-count: 1 !important;
+
         transition-duration: .01ms !important;
     }
 }
+
 
 /* =========================================================
    FOOTER
@@ -2409,39 +2542,59 @@ button {
 
 .footer {
     width: 100%;
-    padding: 28px 20px 32px;
+
+    padding:
+        28px 20px 32px;
+
     text-align: center;
+
     background: #fff;
+
     color: #8f5d68;
+
     font-family: "Cinzel", serif;
 }
 
 .footer p {
-    margin: 0 0 6px;
+    margin:
+        0 0 6px;
+
     font-size: 10px;
+
     letter-spacing: 1.5px;
+
     text-transform: uppercase;
 }
 
 .footer strong {
     display: block;
+
     margin-bottom: 7px;
+
     color: #D1030F;
+
     font-size: 15px;
+
     font-weight: 600;
+
     letter-spacing: 1px;
 }
 
 .footer span {
     display: block;
+
     font-size: 9px;
+
     letter-spacing: 1px;
+
     opacity: .7;
 }
 
 @media (max-width: 600px) {
+
     .footer {
-        padding: 24px 16px 28px;
+        padding:
+            24px 16px 28px;
     }
 
     .footer p {
@@ -2457,9 +2610,9 @@ button {
     }
 }
 
+
 /* =========================================================
    CONTROL DE ANCHO EN MÓVILES
-   Evita bordes blancos y desplazamientos horizontales
    ========================================================= */
 
 @media (max-width: 600px) {
@@ -2468,12 +2621,14 @@ button {
     body {
         width: 100%;
         max-width: 100%;
+
         overflow-x: hidden;
     }
 
     .invitacion {
         width: 100%;
         max-width: 100%;
+
         overflow-x: clip;
     }
 
@@ -2495,8 +2650,9 @@ button {
     }
 }
 
+
 /* =========================================================
-   CONTROL DE DESBORDAMIENTO DE ELEMENTOS DECORATIVOS
+   CONTROL DE DESBORDAMIENTO
    ========================================================= */
 
 .grafico-lazo,
