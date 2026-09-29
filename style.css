@@ -1973,9 +1973,11 @@ button {
 .rsvp-lazo {
     position: absolute;
 
-    z-index: 20;
+    z-index: 10;
 
     opacity: 1;
+
+    pointer-events: none;
 }
 
 .fecha-lazo {
@@ -2266,7 +2268,7 @@ button {
     }
 
     .titulo-bienvenida {
-        margin-top: 125px;
+        margin-top: 15px;
 
         font-size:
             clamp(42px, 12vw, 62px);
